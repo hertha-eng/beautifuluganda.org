@@ -1,0 +1,72 @@
+.submit-trip-main {
+    min-height: calc(100vh - 220px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem 1.5rem;
+    background:
+        radial-gradient(circle at top left, rgba(255, 193, 7, 0.14), transparent 28%),
+        linear-gradient(180deg, #f8fcfa 0%, #eef6f2 100%);
+}
+
+.submit-trip-card {
+    max-width: 760px;
+    padding: 3rem;
+    text-align: center;
+    border-radius: 24px;
+    background: linear-gradient(180deg, #ffffff 0%, #f5fbf8 100%);
+    border: 1px solid rgba(0, 77, 64, 0.12);
+    box-shadow: 0 18px 40px rgba(0, 77, 64, 0.12);
+}
+
+.eyebrow {
+    color: #007b5e;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 0.8rem;
+}
+
+.submit-trip-card h2 {
+    color: #004d40;
+    margin-bottom: 1rem;
+}
+
+.submit-trip-card p {
+    color: #4e615b;
+    max-width: 620px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.redirect-note {
+    font-weight: 600;
+}
+
+.submit-trip-card .btn {
+    width: auto;
+    min-width: 220px;
+    margin-top: 1rem;
+}
+
+@media (max-width: 768px) {
+    .submit-trip-card {
+        padding: 2rem 1.5rem;
+        border-radius: 18px;
+    }
+}
+
+@media (max-width: 480px) {
+    .submit-trip-main {
+        padding: 2.5rem 1rem;
+    }
+
+    .submit-trip-card {
+        padding: 1.5rem 1.1rem;
+    }
+
+    .submit-trip-card .btn {
+        width: 100%;
+        min-width: 0;
+    }
+}

@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="images/logo.png" type="image/png">
+    <link rel="apple-touch-icon" href="images/logo.png">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <meta name="theme-color" content="#004d40">
+    <link rel="canonical" href="https://lovableuganda.com/blog.html">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Uganda Travel Blog | Safari Tips, Itineraries, Culture & Safety Guides">
+    <meta property="og:description" content="Read Uganda travel guides, itinerary ideas, packing tips, culture stories, and safety advice for planning your trip.">
+    <meta property="og:url" content="https://lovableuganda.com/blog.html">
+    <meta property="og:site_name" content="Explore Uganda">
+    <meta property="og:image" content="https://lovableuganda.com/images/blog-hero.webp">
+    <meta property="og:image:alt" content="Explore Uganda travel blog preview">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Uganda Travel Blog | Safari Tips, Itineraries, Culture & Safety Guides">
+    <meta name="twitter:description" content="Explore practical Uganda travel content including safari planning, culture, packing, and safety articles.">
+    <meta name="twitter:image" content="https://lovableuganda.com/images/blog-hero.webp">
+    <meta name="twitter:image:alt" content="Explore Uganda travel blog preview">
+    <meta name="description" content="Read Uganda travel guides, itinerary ideas, packing tips, culture stories, and safety advice for planning your trip.">
+    <title>Uganda Travel Blog | Safari Tips, Itineraries, Culture & Safety Guides</title>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/blog.css">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Blog",
+      "name": "Explore Uganda Travel Blog",
+      "url": "https://lovableuganda.com/blog.html",
+      "description": "Read Uganda travel guides, itinerary ideas, packing tips, culture stories, and safety advice for planning your trip.",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Explore Uganda",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://lovableuganda.com/images/logo.png"
+        }
+      },
+      "inLanguage": "en"
+    }
+    </script>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <div class="logo">
+            <img src="images/logo.png" alt="Explore Uganda logo" class="site-logo" width="60" height="60" loading="eager" decoding="sync" />
+            <p class="site-title">Explore Uganda</p>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="destinations.html">Destinations</a></li>
+                <li><a href="tours.html">Tours</a></li>
+                                <li class="more-toggle">More</li>
+                <li class="more-item"><a href="souvenirs.html">Souvenirs</a></li>
+                <li class="more-item active"><a href="blog.html">Blog</a></li>
+                <li class="more-item"><a href="plan-trip.html">Plan My Trip</a></li>
+                <li class="more-item"><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+        <a href="blog.html#blog-list" class="cta">Read More</a>
+    </header>
+
+        <div class="main-content">
+            <!-- HERO SECTION -->
+            <section id="hero-blog">
+
+                <h1>Travel Tips & Guides for Uganda</h1>
+                <p>Get expert advice, itineraries, and tips to make the most of your journey in the Pearl of Africa.</p>
+            </section>
+
+            <!-- BLOG POSTS LIST -->
+    <section id="blog-list">
+        <div class="blog-list-header">
+            <p class="section-kicker">Explore More Stories</p>
+            <h2>Browse All Articles</h2>
+            <p class="blog-list-intro">Discover Uganda travel guides, safari ideas, culture stories, and practical tips to help you plan with confidence.</p>
+        </div>
+
+        <div class="blog-filters">
+            <label for="blog-search" class="visually-hidden">Search blog articles</label>
+            <input type="search" id="blog-search" class="blog-search" placeholder="Search by title, topic, author, or country..." />
+
+            <label for="blog-category" class="visually-hidden">Filter by category</label>
+            <select id="blog-category" class="blog-category">
+                <option value="all">All Categories</option>
+                <option value="destinations">Destinations</option>
+                <option value="itineraries">Itineraries</option>
+                <option value="packing">Packing Tips</option>
+                <option value="culture">Culture</option>
+                <option value="safety">Safety</option>
+                <option value="wildlife">Wildlife</option>
+                <option value="waterfalls">Waterfalls & Lakes</option>
+                <option value="adventure">Adventure</option>
+                <option value="islands">Islands & Relaxation</option>
+                <option value="cities">Cities</option>
+                <option value="travel-tips">Travel Guides</option>
+            </select>
+        </div>
+
+        <!--
+            New Article Checklist
+            1. Create the article page inside /blog pages/
+            2. Add or confirm the article image exists inside /images/
+            3. Copy the article-card template below and paste it inside .blog-grid
+            4. Update data-category to one of: destinations, itineraries, packing, culture, safety
+            5. Add useful search words in data-keywords
+            6. Update the image src, alt text, title, summary, date, tag, and article link
+            7. If you add a brand-new category, also add it to the #blog-category filter dropdown above
+        -->
+
+        <!--
+            Reusable Article Card Template
+            <article class="blog-card" data-category="culture" data-keywords="uganda culture traditions festivals travel">
+                <img src="https://example.com/article-image.jpg" alt="Describe the article image clearly" />
+                <div class="blog-card-content">
+                    <div class="blog-meta">
+                        <span class="blog-tag">Culture</span>
+                        <time datetime="2026-01-21">January 21, 2026</time>
+                    </div>
+                    <h3>Your Article Title</h3>
+                    <p>Write a short, clear summary that helps readers decide to open the article.</p>
+                    <div class="blog-card-actions">
+                        <a href="https://example.com/article-slug" class="btn">Read More</a>
+                        <div class="share-actions" aria-label="Share Your Article Title">
+                            <span class="share-label">Share:</span>
+                            <button type="button" class="share-action" data-share-platform="facebook" data-share-url="https://example.com/article-slug" data-share-title="Your Article Title" data-share-text="Write a short, clear summary that helps readers decide to open the article." aria-label="Share on Facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i></button>
+                            <button type="button" class="share-action" data-share-platform="twitter" data-share-url="https://example.com/article-slug" data-share-title="Your Article Title" data-share-text="Write a short, clear summary that helps readers decide to open the article." aria-label="Share on X"><i class="fab fa-x-twitter" aria-hidden="true"></i></button>
+                            <button type="button" class="share-action" data-share-platform="whatsapp" data-share-url="https://example.com/article-slug" data-share-title="Your Article Title" data-share-text="Write a short, clear summary that helps readers decide to open the article." aria-label="Share on WhatsApp"><i class="fab fa-whatsapp" aria-hidden="true"></i></button>
+                            <button type="button" class="share-action" data-share-platform="copy" data-share-url="https://example.com/article-slug" data-share-title="Your Article Title" data-share-text="Write a short, clear summary that helps readers decide to open the article." aria-label="Copy direct link"><i class="fas fa-link" aria-hidden="true"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        -->
+            
+
+        <div class="blog-grid"></div>
+        <div id="blog-archive-cta" class="blog-archive-cta">
+            <p>The newest <span id="blog-latest-count">8</span> articles appear here first.</p>
+            <a href="blog-archive.html" class="archive-link">Browse Older Posts</a>
+        </div>
+        <p id="blog-empty-state" class="blog-empty-state" hidden>No articles match your current search or category filter.</p>
+    </section>
+
+    <!-- CALL TO ACTION -->
+    <section id="cta-blog">
+        <h2>Start Planning Your Uganda Adventure</h2>
+        <a href="plan-trip.html" class="btn">Plan My Trip</a>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-about">
+            <img src="images/logo.png" alt="Explore Uganda logo" class="footer-logo" />
+            <h2>Explore Uganda</h2>
+            <p>Discover the Pearl of Africa. Your journey to Uganda’s wildlife, culture, and adventure begins here.</p>
+        </div>
+
+        <div class="footer-links">
+            <h3>Quick Links</h3>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="destinations.html">Destinations</a></li>
+                <li><a href="tours.html">Tours</a></li>
+                <li class="footer-desktop-only"><a href="blog.html">Blog</a></li>
+                <li><a href="plan-trip.html">Plan My Trip</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li class="footer-desktop-only"><a href="souvenirs.html">Souvenirs</a></li>
+                <li class="footer-desktop-only"><a href="privacy-policy.html">Privacy Policy</a></li>
+                <li class="footer-desktop-only"><a href="booking-terms.html">Booking Terms</a></li>
+                <li class="footer-desktop-only"><a href="returns-refund-policy.html">Returns & Refunds</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-shop footer-mobile-only">
+            <h3>Shop</h3>
+            <ul>
+                <li><a href="souvenirs.html">Souvenirs</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-legal footer-mobile-only">
+            <h3>Legal</h3>
+            <ul>
+                <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                <li><a href="booking-terms.html">Booking Terms</a></li>
+                <li><a href="returns-refund-policy.html">Returns & Refunds</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-contact-social">
+            <h3>Contact Us & Follow Us</h3>
+            <ul>
+                <li>Email: info@lovableuganda.com</li>
+                <li>Phone: +256 757 714 664</li>
+                <li>WhatsApp: <a href="https://wa.me/256773167457" target="_blank">+256 773 167 457</a></li>
+                <li>Address: Kampala, Uganda</li>
+            </ul>
+            <div class="footer-social">
+                <ul>
+                    <li><a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
+                    <li><a href="#" target="_blank"><i class="fab fa-instagram"></i></a></li>
+                    <li><a href="#" target="_blank"><i class="fab fa-x-twitter"></i></a></li>
+                    <li><a href="#" target="_blank"><i class="fab fa-tiktok"></i></a></li>
+                    <li><a href="#" target="_blank"><i class="fab fa-youtube"></i></a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-subscribe">
+            <h3>Subscribe to Our Newsletter</h3>
+            <p>Stay updated with the latest news and offers.</p>
+            <form action="https://formspree.io/f/xlgpqzog" method="POST">
+            <input type="email" name="email" placeholder="Enter your email" autocomplete="email" required>
+                <button type="submit">Subscribe</button>
+            </form>
+        </div>
+
+        <p>&copy; 2026 Explore Uganda. All rights reserved.</p>
+    </footer>
+
+<script>
+    const moreToggle = document.querySelector('.more-toggle');
+    const moreItems = document.querySelectorAll('.more-item');
+
+    if (moreToggle) {
+        moreToggle.addEventListener('click', () => {
+            const isExpanded = moreToggle.textContent === 'Less';
+            moreItems.forEach(item => {
+                item.style.display = isExpanded ? 'none' : 'block';
+            });
+            moreToggle.textContent = isExpanded ? 'More' : 'Less';
+        });
+    }
+</script>
+
+<script src="js/site-content.js"></script>
+<script src="js/generated-blog-cards.js"></script>
+<script src="js/site-runtime.js"></script>
+<script src="js/share.js"></script>
+<script src="js/blog-card-navigation.js"></script>
+<script>
+    window.ExploreUgandaContent.renderBlogPage();
+</script>
+
+<script>
+    const blogApi = window.ExploreUgandaContent;
+    const blogSearch = document.getElementById('blog-search');
+    const blogCategory = document.getElementById('blog-category');
+    const blogEmptyState = document.getElementById('blog-empty-state');
+    const blogGrid = document.querySelector('#blog-list .blog-grid');
+    const blogArchiveCta = document.getElementById('blog-archive-cta');
+    const blogLatestCount = document.getElementById('blog-latest-count');
+
+    const renderFilteredBlogCards = () => {
+        const allCards = blogApi.getSortedBlogCards();
+        const searchValue = blogSearch ? blogSearch.value.trim().toLowerCase() : '';
+        const categoryValue = blogCategory ? blogCategory.value : 'all';
+        const isDefaultView = !searchValue && categoryValue === 'all';
+        const cardsToRender = isDefaultView
+            ? allCards.slice(0, 8)
+            : allCards.filter((card) => {
+                const matchesCategory = categoryValue === 'all' || card.category === categoryValue;
+                const haystack = blogApi.buildBlogSearchText(card);
+                const matchesSearch = !searchValue || haystack.includes(searchValue);
+                return matchesCategory && matchesSearch;
+            });
+
+        if (blogGrid) {
+            blogGrid.innerHTML = blogApi.buildBlogCardsMarkup(cardsToRender);
+        }
+
+        if (blogEmptyState) {
+            blogEmptyState.hidden = cardsToRender.length !== 0;
+        }
+
+        if (blogArchiveCta) {
+            blogArchiveCta.hidden = !isDefaultView ? cardsToRender.length === 0 : allCards.length <= 8;
+        }
+
+        if (blogLatestCount) {
+            blogLatestCount.textContent = String(Math.min(8, allCards.length));
+        }
+    };
+
+    if (blogSearch) {
+        blogSearch.addEventListener('input', renderFilteredBlogCards);
+    }
+
+    if (blogCategory) {
+        blogCategory.addEventListener('change', renderFilteredBlogCards);
+    }
+
+    renderFilteredBlogCards();
+</script>
+
+</body>
+</html>

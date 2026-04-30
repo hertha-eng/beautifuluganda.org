@@ -1,0 +1,278 @@
+.platform-shell {
+    width: min(1200px, 100% - 2rem);
+    margin: 0 auto;
+    padding: 2rem 0 4rem;
+}
+
+.platform-hero,
+.platform-card {
+    margin-bottom: 1.5rem;
+    padding: 1.4rem;
+    border: 1px solid rgba(0, 77, 64, 0.12);
+    border-radius: 8px;
+    background: #ffffff;
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.06);
+}
+
+.platform-hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(220px, 320px);
+    gap: 1.25rem;
+    align-items: center;
+    background: linear-gradient(135deg, rgba(0, 123, 94, 0.12), rgba(255, 193, 7, 0.14));
+}
+
+.platform-kicker,
+.session-label {
+    margin-bottom: 0.45rem;
+    color: #007b5e;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.platform-session-card {
+    padding: 1rem;
+    border: 1px solid rgba(0, 77, 64, 0.12);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.72);
+}
+
+.panel-heading,
+.list-heading,
+.button-row,
+.platform-tabs {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.panel-note {
+    max-width: 42rem;
+    color: #4d645c;
+}
+
+.platform-form {
+    display: grid;
+    gap: 0.85rem;
+}
+
+.writer-tools {
+    display: grid;
+    gap: 1rem;
+}
+
+.tourist-details-form {
+    padding: 1rem;
+    border: 1px solid rgba(0, 77, 64, 0.1);
+    border-radius: 8px;
+    background: #f8fbfa;
+}
+
+.compact-form {
+    max-width: 540px;
+}
+
+.oauth-divider {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+    max-width: 540px;
+    margin: 1rem 0;
+    color: #6a7e76;
+    font-size: 0.92rem;
+}
+
+.oauth-divider::before,
+.oauth-divider::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: rgba(0, 77, 64, 0.14);
+}
+
+.oauth-button {
+    max-width: 540px;
+}
+
+.platform-form label {
+    display: grid;
+    gap: 0.35rem;
+    color: #20483d;
+    font-weight: 700;
+}
+
+.platform-form input,
+.platform-form select,
+.platform-form textarea {
+    margin: 0;
+}
+
+.checkbox-label {
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    justify-content: start;
+}
+
+.checkbox-label input {
+    width: auto;
+}
+
+.two-column,
+.split-layout {
+    display: grid;
+    gap: 1rem;
+}
+
+.two-column {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.split-layout {
+    grid-template-columns: minmax(300px, 420px) minmax(0, 1fr);
+    align-items: start;
+}
+
+.platform-tabs {
+    justify-content: flex-start;
+    margin: 1.25rem 0;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid rgba(0, 77, 64, 0.12);
+}
+
+.tab-button,
+.small-button,
+.secondary-btn,
+.ghost-btn {
+    width: auto;
+    margin: 0;
+}
+
+.tab-button,
+.small-button {
+    padding: 0.58rem 0.85rem;
+    border: 1px solid rgba(0, 77, 64, 0.18);
+    border-radius: 999px;
+    background: #ffffff;
+    color: #004d40;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.tab-button.is-active,
+.tab-button:hover,
+.small-button:hover {
+    background: #004d40;
+    color: #ffffff;
+}
+
+.secondary-btn {
+    background: #ffffff;
+    color: #004d40;
+    border: 1px solid rgba(0, 77, 64, 0.18);
+}
+
+.ghost-btn {
+    background: transparent;
+    color: #004d40;
+    border: 1px solid transparent;
+}
+
+.platform-status {
+    min-height: 1.5rem;
+    margin-bottom: 1rem;
+    color: #0a6c51;
+    font-weight: 700;
+}
+
+.platform-status.is-error {
+    color: #a32a2a;
+}
+
+.tab-panel {
+    display: none;
+}
+
+.tab-panel.is-active {
+    display: block;
+}
+
+.data-list {
+    display: grid;
+    gap: 0.85rem;
+    margin-top: 1rem;
+}
+
+.data-card {
+    display: grid;
+    gap: 0.65rem;
+    padding: 1rem;
+    border: 1px solid rgba(0, 77, 64, 0.1);
+    border-radius: 8px;
+    background: #f8fbfa;
+}
+
+.data-card h4 {
+    color: #004d40;
+}
+
+.meta-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.35rem 1rem;
+    color: #4d645c;
+    font-size: 0.94rem;
+}
+
+.card-actions {
+    display: flex;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+}
+
+.card-actions button {
+    width: auto;
+    margin: 0;
+}
+
+.editor-toolbar {
+    display: flex;
+    gap: 0.45rem;
+    flex-wrap: wrap;
+}
+
+.editor-toolbar .small-button {
+    padding: 0.44rem 0.68rem;
+}
+
+.status-pill {
+    display: inline-flex;
+    width: fit-content;
+    padding: 0.25rem 0.55rem;
+    border-radius: 999px;
+    background: rgba(0, 123, 94, 0.1);
+    color: #004d40;
+    font-size: 0.82rem;
+    font-weight: 700;
+}
+
+.audit-list .data-card {
+    background: #ffffff;
+}
+
+.audit-detail {
+    margin: 0;
+    color: #31584d;
+    font-size: 0.94rem;
+}
+
+@media (max-width: 860px) {
+    .platform-hero,
+    .split-layout,
+    .two-column {
+        grid-template-columns: 1fr;
+    }
+}

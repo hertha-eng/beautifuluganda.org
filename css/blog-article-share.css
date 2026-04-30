@@ -1,0 +1,72 @@
+.article-share-panel {
+    margin: 1.5rem auto 2rem;
+    padding: 1.25rem 1.4rem;
+    max-width: 920px;
+    border: 1px solid rgba(0, 77, 64, 0.12);
+    border-radius: 18px;
+    background: linear-gradient(180deg, #ffffff 0%, #f3faf6 100%);
+    box-shadow: 0 14px 28px rgba(18, 76, 58, 0.08);
+}
+
+.article-share-panel h2 {
+    margin-bottom: 0.45rem;
+    font-size: clamp(1.15rem, 2vw, 1.45rem);
+    color: #12372d;
+}
+
+.article-share-panel p {
+    margin-bottom: 1rem;
+    color: #52665f;
+}
+
+.article-share-panel .share-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.article-share-panel .share-label {
+    color: #5f6f6a;
+    font-size: 0.95rem;
+    font-weight: 700;
+}
+
+.article-share-panel .share-action {
+    width: 2.65rem;
+    height: 2.65rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #cfe0d8;
+    border-radius: 999px;
+    background: #ffffff;
+    color: #0d5d49;
+    cursor: pointer;
+    transition: transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.article-share-panel .share-action:hover,
+.article-share-panel .share-action:focus-visible {
+    transform: translateY(-1px);
+    background: #007b5e;
+    border-color: #007b5e;
+    color: #ffffff;
+    outline: none;
+}
+
+.article-share-panel .share-action.is-copied {
+    background: #ffc107;
+    border-color: #ffc107;
+    color: #12372d;
+}
+
+@media (max-width: 640px) {
+    .article-share-panel {
+        padding: 1.1rem 1rem;
+    }
+
+    .article-share-panel .share-actions {
+        align-items: flex-start;
+    }
+}

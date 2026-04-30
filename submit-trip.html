@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="refresh" content="6;url=index.html">
+    <link rel="icon" href="images/logo.png" type="image/png">
+    <link rel="apple-touch-icon" href="images/logo.png">
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="canonical" href="https://lovableuganda.com/submit-trip.html">
+    <title>Thank You - Explore Uganda</title>
+    <meta name="description" content="Thank you for planning your Uganda trip with Explore Uganda. We will contact you shortly to help finalize your itinerary.">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/submit-trip.css">
+</head>
+<body>
+
+    <header>
+        <div class="logo">
+            <img src="images/logo.png" alt="Explore Uganda logo" class="site-logo" />
+            <p class="site-title">Explore Uganda</p>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="destinations.html">Destinations</a></li>
+                <li><a href="tours.html">Tours</a></li>
+                                <li class="more-toggle">More</li>
+                <li class="more-item"><a href="souvenirs.html">Souvenirs</a></li>
+                <li class="more-item"><a href="blog.html">Blog</a></li>
+                <li class="more-item"><a href="plan-trip.html">Plan My Trip</a></li>
+                <li class="more-item"><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+        <a href="index.html" class="cta">Go Home</a>
+    </header>
+
+    <main class="submit-trip-main">
+        <section class="submit-trip-card">
+            <p class="eyebrow">Trip Request Received</p>
+            <h2>Thank you for planning your Uganda adventure with us.</h2>
+            <p>We’ve received your trip request and our team will contact you shortly to help finalize your destinations, tours, and preferences.</p>
+            <p class="redirect-note">You’ll be redirected to the home page in <span id="countdown">6</span> seconds.</p>
+            <a href="index.html" class="btn">Back to Home</a>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-about">
+            <img src="images/logo.png" alt="Explore Uganda logo" class="footer-logo" />
+            <h2>Explore Uganda</h2>
+            <p>Discover the Pearl of Africa. Your journey to Uganda’s wildlife, culture, and adventure begins here.</p>
+        </div>
+
+        <div class="footer-links">
+            <h3>Quick Links</h3>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="destinations.html">Destinations</a></li>
+                <li><a href="tours.html">Tours</a></li>
+                <li class="footer-desktop-only"><a href="blog.html">Blog</a></li>
+                <li><a href="plan-trip.html">Plan My Trip</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li class="footer-desktop-only"><a href="souvenirs.html">Souvenirs</a></li>
+                <li class="footer-desktop-only"><a href="privacy-policy.html">Privacy Policy</a></li>
+                <li class="footer-desktop-only"><a href="booking-terms.html">Booking Terms</a></li>
+                <li class="footer-desktop-only"><a href="returns-refund-policy.html">Returns & Refunds</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-shop footer-mobile-only">
+            <h3>Shop</h3>
+            <ul>
+                <li><a href="souvenirs.html">Souvenirs</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-legal footer-mobile-only">
+            <h3>Legal</h3>
+            <ul>
+                <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                <li><a href="booking-terms.html">Booking Terms</a></li>
+                <li><a href="returns-refund-policy.html">Returns & Refunds</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-contact-social">
+            <h3>Contact Us & Follow Us</h3>
+            <ul>
+                <li>Email: info@lovableuganda.com</li>
+                <li>Phone: +256 757 714 664</li>
+                <li>WhatsApp: <a href="https://wa.me/256773167457" target="_blank">+256 773 167 457</a></li>
+                <li>Address: Kampala, Uganda</li>
+            </ul>
+            <div class="footer-social">
+                <ul>
+                    <li><a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
+                    <li><a href="#" target="_blank"><i class="fab fa-instagram"></i></a></li>
+                    <li><a href="#" target="_blank"><i class="fab fa-x-twitter"></i></a></li>
+                    <li><a href="#" target="_blank"><i class="fab fa-tiktok"></i></a></li>
+                    <li><a href="#" target="_blank"><i class="fab fa-youtube"></i></a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-subscribe">
+            <h3>Subscribe to Our Newsletter</h3>
+            <p>Stay updated with the latest news and offers.</p>
+            <form action="https://formspree.io/f/xlgpqzog" method="POST">
+                <input type="email" name="email" placeholder="Enter your email" autocomplete="email" required>
+                <button type="submit">Subscribe</button>
+            </form>
+        </div>
+
+        <p>&copy; 2026 Explore Uganda. All rights reserved.</p>
+    </footer>
+
+<script>
+    const moreToggle = document.querySelector('.more-toggle');
+    const moreItems = document.querySelectorAll('.more-item');
+
+    if (moreToggle) {
+        moreToggle.addEventListener('click', () => {
+            const isExpanded = moreToggle.textContent === 'Less';
+            moreItems.forEach(item => {
+                item.style.display = isExpanded ? 'none' : 'block';
+            });
+            moreToggle.textContent = isExpanded ? 'More' : 'Less';
+        });
+    }
+</script>
+
+<script>
+    const countdownEl = document.getElementById('countdown');
+    let seconds = 6;
+
+    const timer = setInterval(() => {
+        seconds -= 1;
+
+        if (countdownEl && seconds >= 0) {
+            countdownEl.textContent = String(seconds);
+        }
+
+        if (seconds <= 0) {
+            clearInterval(timer);
+        }
+    }, 1000);
+</script>
+
+</body>
+</html>

@@ -1,0 +1,848 @@
+/* ==========================
+   HERO SECTION
+========================== */
+#hero-plan {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 6em 2em;
+    background-image: url('../images/plan-trip-hero.webp'); /* placeholder */
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+    border-radius: 12px;
+    position: relative;
+}
+
+#hero-plan::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.35);
+    border-radius: 12px;
+}
+
+#hero-plan h1,
+#hero-plan h2,
+#hero-plan p {
+    position: relative;
+    z-index: 1;
+}
+
+#hero-plan h1,
+#hero-plan h2 {
+    color: #ffffff;
+    text-shadow: 0 3px 10px rgba(0, 0, 0, 0.65);
+}
+
+/* ==========================
+   WHY UGANDA
+========================== */
+#why-uganda {
+    max-width: 1100px;
+    margin: 2.5em auto 0;
+}
+
+#why-uganda > p {
+    max-width: 760px;
+    margin: 0 auto 2.25em;
+    text-align: center;
+    color: #5b6d67;
+}
+
+.why-uganda-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.5em;
+}
+
+.why-uganda-card {
+    padding: 1.6em;
+    border: 1px solid rgba(0, 77, 64, 0.12);
+    border-radius: 16px;
+    background: linear-gradient(180deg, #ffffff 0%, #f5fbf8 100%);
+    box-shadow: 0 10px 25px rgba(0, 77, 64, 0.08);
+}
+
+.why-uganda-card h3 {
+    margin-bottom: 0.6em;
+    color: #004d40;
+}
+
+.why-uganda-card p {
+    margin-bottom: 0;
+    color: #495c56;
+}
+
+/* ==========================
+   PLANNING TRUST / PROCESS / FAQ
+========================== */
+#planning-confidence,
+#planning-process,
+#plan-trip-faq {
+    max-width: 1100px;
+    margin: 2.5em auto 0;
+}
+
+.planning-confidence-grid,
+.planning-process-grid,
+.plan-faq-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.5em;
+}
+
+.planning-confidence-card,
+.process-step,
+.plan-faq-item {
+    padding: 1.5em;
+    border: 1px solid rgba(0, 77, 64, 0.12);
+    border-radius: 16px;
+    background: linear-gradient(180deg, #ffffff 0%, #f5fbf8 100%);
+    box-shadow: 0 10px 25px rgba(0, 77, 64, 0.07);
+}
+
+.planning-confidence-card h3,
+.process-step h3,
+.plan-faq-item h3 {
+    margin-bottom: 0.55em;
+    color: #004d40;
+}
+
+.planning-confidence-card p,
+.process-step p,
+.plan-faq-item p {
+    margin-bottom: 0;
+    color: #495c56;
+}
+
+.process-step span {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    margin-bottom: 0.85em;
+    border-radius: 999px;
+    background: #007b5e;
+    color: #fff;
+    font-weight: 700;
+}
+
+/* ==========================
+   TRIP FORM
+========================== */
+#trip-form {
+    max-width: 800px;
+    margin: 3em auto;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    padding: 3em;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1), 0 1px 8px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+#trip-form h2 {
+    text-align: center;
+    color: #004d40;
+    font-size: 2.2rem;
+    margin-bottom: 0.5em;
+    font-weight: 700;
+}
+
+#trip-form > p {
+    text-align: center;
+    color: #6c757d;
+    font-size: 1.1rem;
+    margin-bottom: 2.5em;
+    line-height: 1.6;
+}
+
+#trip-form form {
+    display: grid;
+    gap: 2em;
+}
+
+.policy-note {
+    margin: 0;
+    padding: 1rem 1.1rem;
+    border: 1px solid rgba(0, 77, 64, 0.12);
+    border-radius: 14px;
+    background: linear-gradient(135deg, #f4faf7 0%, #fffaf0 100%);
+    color: #48615a;
+    font-size: 0.96rem;
+    line-height: 1.6;
+}
+
+.policy-note a {
+    font-weight: 700;
+}
+
+/* Fieldset Styling */
+#trip-form fieldset {
+    border: 2px solid #e9ecef;
+    border-radius: 12px;
+    padding: 2em;
+    background: rgba(255, 255, 255, 0.7);
+    transition: all 0.3s ease;
+}
+
+#trip-form fieldset:hover {
+    border-color: #007b5e;
+    box-shadow: 0 5px 15px rgba(0, 123, 94, 0.1);
+}
+
+#trip-form legend {
+    color: #004d40;
+    font-size: 1.3rem;
+    font-weight: 600;
+    padding: 0 1em;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    border-radius: 8px;
+    border: 2px solid #007b5e;
+    margin-bottom: 1em;
+}
+
+/* Form Fields */
+#trip-form label {
+    display: block;
+    margin-bottom: 0.5em;
+    font-weight: 600;
+    color: #495057;
+    font-size: 0.95rem;
+}
+
+#trip-form .field-hint {
+    margin: -0.1em 0 0.9em;
+    color: #5f6f6a;
+    font-size: 0.95rem;
+}
+
+.quick-start-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+    margin-bottom: 1.25rem;
+}
+
+.planner-helper {
+    margin-bottom: 1.4rem;
+    padding: 1rem 1.1rem;
+    border: 1px solid #d9e8e1;
+    border-radius: 14px;
+    background: linear-gradient(135deg, #f5fbf8 0%, #fffdf6 100%);
+}
+
+.planner-helper p {
+    margin: 0 0 0.9rem;
+    color: #4e625b;
+}
+
+.planner-toggle {
+    width: auto;
+    margin: 0;
+    padding: 0.8rem 1.15rem;
+    border: 1px solid rgba(0, 77, 64, 0.18);
+    border-radius: 999px;
+    background: #fff;
+    color: #004d40;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.planner-toggle:hover {
+    background: #004d40;
+    color: #fff;
+}
+
+.advanced-planner[hidden] {
+    display: none;
+}
+
+.advanced-planner {
+    display: grid;
+    gap: 1rem;
+    margin-bottom: 1.25rem;
+}
+
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+#trip-form input,
+#trip-form select,
+#trip-form textarea {
+    width: 100%;
+    padding: 0.875em 1em;
+    border: 2px solid #dee2e6;
+    border-radius: 8px;
+    font-size: 1rem;
+    background: #fff;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+}
+
+#trip-form input:focus,
+#trip-form select:focus,
+#trip-form textarea:focus {
+    border-color: #007b5e;
+    box-shadow: 0 0 0 3px rgba(0, 123, 94, 0.15);
+    outline: none;
+    background: #fff;
+}
+
+#trip-form textarea {
+    resize: vertical;
+    min-height: 120px;
+    font-family: inherit;
+}
+
+#trip-form select {
+    cursor: pointer;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
+    background-position: right 0.75rem center;
+    background-repeat: no-repeat;
+    background-size: 1rem;
+    padding-right: 2.5rem;
+}
+
+.destination-picker {
+    border: 2px solid #dee2e6;
+    border-radius: 14px;
+    background: #fff;
+    overflow: hidden;
+}
+
+.tour-picker {
+    border: 2px solid #dee2e6;
+    border-radius: 14px;
+    background: #fff;
+    overflow: hidden;
+}
+
+.destination-picker-toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.2rem;
+    background: linear-gradient(135deg, #eef7f3 0%, #f8fbfa 100%);
+    border-bottom: 1px solid #dde9e3;
+}
+
+.destination-search-wrap {
+    padding: 1rem 1.2rem 0.85rem;
+    background: #fff;
+    border-bottom: 1px solid #eef2f1;
+}
+
+.destination-search {
+    width: 100%;
+    margin: 0;
+    padding: 0.95rem 1rem;
+    border: 1px solid #d7e4de;
+    border-radius: 12px;
+    background: linear-gradient(180deg, #ffffff 0%, #fbfdfc 100%);
+}
+
+.destination-search:focus {
+    border-color: #007b5e;
+    box-shadow: 0 0 0 3px rgba(0, 123, 94, 0.12);
+    outline: none;
+}
+
+.destination-summary {
+    margin: 0;
+    color: #35514a;
+    font-size: 0.96rem;
+    font-weight: 600;
+}
+
+.clear-selections {
+    width: auto;
+    margin: 0;
+    padding: 0.65rem 1rem;
+    border: 1px solid rgba(0, 77, 64, 0.18);
+    border-radius: 999px;
+    background: #fff;
+    color: #004d40;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.clear-selections:hover {
+    background: #004d40;
+    color: #fff;
+}
+
+.destination-category {
+    border-top: 1px solid #eef2f1;
+}
+
+.tour-category {
+    border-top: 1px solid #eef2f1;
+}
+
+.destination-category:first-of-type {
+    border-top: 0;
+}
+
+.tour-category:first-of-type {
+    border-top: 0;
+}
+
+.destination-category summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 1.2rem;
+    cursor: pointer;
+    list-style: none;
+    font-weight: 700;
+    color: #004d40;
+    background: #fff;
+}
+
+.tour-category summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 1.2rem;
+    cursor: pointer;
+    list-style: none;
+    font-weight: 700;
+    color: #004d40;
+    background: #fff;
+}
+
+.destination-category summary::-webkit-details-marker {
+    display: none;
+}
+
+.tour-category summary::-webkit-details-marker {
+    display: none;
+}
+
+.destination-category summary::after {
+    content: "+";
+    font-size: 1.2rem;
+    color: #007b5e;
+}
+
+.tour-category summary::after {
+    content: "+";
+    font-size: 1.2rem;
+    color: #007b5e;
+}
+
+.destination-category[open] summary {
+    background: #f5fbf8;
+}
+
+.tour-category[open] summary {
+    background: #f5fbf8;
+}
+
+.destination-category[open] summary::after {
+    content: "-";
+}
+
+.tour-category[open] summary::after {
+    content: "-";
+}
+
+.destination-options {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.85rem;
+    padding: 0 1.2rem 1.2rem;
+}
+
+.destination-options label {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    margin: 0;
+    padding: 0.9rem 1rem;
+    border: 1px solid #e1ebe6;
+    border-radius: 12px;
+    background: #fcfefd;
+    font-weight: 500;
+    line-height: 1.45;
+    cursor: pointer;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.destination-options label:hover {
+    border-color: rgba(0, 123, 94, 0.45);
+    box-shadow: 0 8px 18px rgba(0, 123, 94, 0.08);
+    transform: translateY(-1px);
+}
+
+.destination-options input[type="checkbox"] {
+    width: 1.05rem;
+    height: 1.05rem;
+    margin: 0.1rem 0 0;
+    accent-color: #007b5e;
+    flex-shrink: 0;
+}
+
+.destination-options label:has(input:checked) {
+    border-color: #007b5e;
+    background: linear-gradient(135deg, rgba(0, 123, 94, 0.1), rgba(255, 193, 7, 0.12));
+    box-shadow: 0 10px 20px rgba(0, 123, 94, 0.12);
+}
+
+.tour-options {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.85rem;
+    padding: 1.2rem;
+}
+
+.tour-options label {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    margin: 0;
+    padding: 0.9rem 1rem;
+    border: 1px solid #e1ebe6;
+    border-radius: 12px;
+    background: #fcfefd;
+    font-weight: 500;
+    line-height: 1.45;
+    cursor: pointer;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.tour-options label:hover {
+    border-color: rgba(0, 123, 94, 0.45);
+    box-shadow: 0 8px 18px rgba(0, 123, 94, 0.08);
+    transform: translateY(-1px);
+}
+
+.tour-options input[type="checkbox"] {
+    width: 1.05rem;
+    height: 1.05rem;
+    margin: 0.1rem 0 0;
+    accent-color: #007b5e;
+    flex-shrink: 0;
+}
+
+.tour-options label:has(input:checked) {
+    border-color: #007b5e;
+    background: linear-gradient(135deg, rgba(0, 123, 94, 0.1), rgba(255, 193, 7, 0.12));
+    box-shadow: 0 10px 20px rgba(0, 123, 94, 0.12);
+}
+
+.custom-trip-builder {
+    display: grid;
+    gap: 1rem;
+}
+
+.custom-trip-builder-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.custom-trip-list {
+    display: grid;
+    gap: 1rem;
+}
+
+.custom-selection-card {
+    padding: 1.2rem;
+    border: 1px solid #dce7e2;
+    border-radius: 14px;
+    background: linear-gradient(180deg, #ffffff 0%, #f7fbf9 100%);
+    box-shadow: 0 10px 24px rgba(0, 77, 64, 0.06);
+}
+
+.custom-selection-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 0.75rem;
+}
+
+.custom-selection-title {
+    margin: 0;
+    color: #004d40;
+    font-size: 1.05rem;
+}
+
+.add-selection-btn,
+.remove-selection-btn {
+    width: auto;
+    margin: 0;
+    padding: 0.7rem 1rem;
+    border: 1px solid rgba(0, 77, 64, 0.18);
+    border-radius: 999px;
+    background: #fff;
+    color: #004d40;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.add-selection-btn:hover,
+.remove-selection-btn:hover {
+    background: #004d40;
+    color: #fff;
+}
+
+.add-selection-btn:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+    background: #eef3f1;
+    color: #6a7d77;
+}
+
+.custom-selection-card textarea {
+    min-height: 100px;
+}
+
+.custom-destination-select {
+    margin-bottom: 1rem;
+}
+
+.custom-tour-checklist {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+}
+
+.custom-tour-checklist.is-empty {
+    grid-template-columns: 1fr;
+    padding: 0.95rem 1rem;
+    border: 1px dashed #c9dad2;
+    border-radius: 12px;
+    color: #60726c;
+    background: #fbfdfc;
+}
+
+.custom-tour-choice {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.7rem;
+    margin: 0;
+    padding: 0.85rem 0.95rem;
+    border: 1px solid #e1ebe6;
+    border-radius: 12px;
+    background: #fcfefd;
+    cursor: pointer;
+}
+
+.custom-tour-choice input[type="checkbox"] {
+    width: 1rem;
+    height: 1rem;
+    margin: 0.15rem 0 0;
+    accent-color: #007b5e;
+    flex-shrink: 0;
+}
+
+.custom-tour-choice:has(input:checked) {
+    border-color: #007b5e;
+    background: linear-gradient(135deg, rgba(0, 123, 94, 0.1), rgba(255, 193, 7, 0.12));
+}
+
+/* Submit Button */
+#trip-form .btn {
+    background: linear-gradient(135deg, #007b5e 0%, #004d40 100%);
+    color: #fff;
+    padding: 1em 2em;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 123, 94, 0.3);
+    margin-top: 1em;
+}
+
+#trip-form .btn:hover {
+    background: linear-gradient(135deg, #004d40 0%, #00251a 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 123, 94, 0.4);
+}
+
+#trip-form .btn:active {
+    transform: translateY(0);
+}
+
+/* ==========================
+   RESPONSIVE
+========================== */
+@media (max-width: 992px) {
+    #hero-plan {
+        padding: 5em 1.5em;
+    }
+    #trip-form {
+        max-width: 90%;
+        padding: 2.5em;
+    }
+}
+
+@media (max-width: 768px) {
+    #hero-plan {
+        padding: 4em 1em;
+    }
+
+    .why-uganda-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .planning-confidence-grid,
+    .planning-process-grid,
+    .plan-faq-grid {
+        grid-template-columns: 1fr;
+    }
+
+    #trip-form {
+        max-width: 100%;
+        padding: 2em;
+        margin: 2em auto;
+    }
+    #trip-form h2 {
+        font-size: 1.8rem;
+    }
+    #trip-form fieldset {
+        padding: 1.5em;
+    }
+
+    .destination-picker-toolbar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .quick-start-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .custom-trip-builder-header,
+    .custom-selection-top {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .destination-search-wrap {
+        padding: 0.95rem 1rem 0.85rem;
+    }
+
+    .destination-options {
+        grid-template-columns: 1fr;
+    }
+
+    .tour-options {
+        grid-template-columns: 1fr;
+    }
+
+    .custom-tour-checklist {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    #hero-plan h1,
+    #hero-plan h2 {
+        font-size: 1.4rem;
+    }
+    #hero-plan p {
+        font-size: 0.95rem;
+    }
+
+    #why-uganda > p {
+        margin-bottom: 1.5em;
+        font-size: 0.95rem;
+    }
+
+    .why-uganda-card {
+        padding: 1.25em;
+    }
+
+    .planning-confidence-card,
+    .process-step,
+    .plan-faq-item {
+        padding: 1.25em;
+    }
+
+    #trip-form {
+        padding: 1.5em;
+        margin: 1.5em auto;
+    }
+    #trip-form h2 {
+        font-size: 1.6rem;
+    }
+    #trip-form > p {
+        font-size: 1rem;
+    }
+    #trip-form fieldset {
+        padding: 1.25em;
+    }
+    #trip-form input,
+    #trip-form select,
+    #trip-form textarea {
+        font-size: 0.95rem;
+        padding: 0.75em;
+    }
+
+    #trip-form .field-hint {
+        font-size: 0.9rem;
+    }
+
+    .destination-picker-toolbar,
+    .destination-search-wrap,
+    .destination-category summary,
+    .tour-category summary,
+    .destination-options {
+        padding-left: 0.95rem;
+        padding-right: 0.95rem;
+    }
+
+    .destination-options label {
+        padding: 0.85rem 0.9rem;
+    }
+
+    .tour-options {
+        padding: 0.95rem;
+    }
+
+    .tour-options label {
+        padding: 0.85rem 0.9rem;
+    }
+
+    .add-selection-btn,
+    .remove-selection-btn {
+        width: 100%;
+    }
+
+    .clear-selections {
+        width: 100%;
+    }
+
+    .planner-toggle {
+        width: 100%;
+    }
+
+    #trip-form .btn {
+        font-size: 1rem;
+        padding: 0.875em 1.5em;
+    }
+}

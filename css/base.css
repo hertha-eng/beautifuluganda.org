@@ -1,0 +1,268 @@
+/* ==========================
+   RESET & BOX SIZING
+========================== */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+main img,
+section img,
+article img,
+.destination img,
+.tour img,
+.souvenir img,
+.blog-post img,
+.blog-card img,
+.destination-card img,
+.tour-card img,
+.souvenir-card img,
+.contact-hero img,
+#hero-contact img,
+#hero-plan img,
+#hero-destinations img,
+#hero-tours img,
+#hero-souvenirs img,
+#hero-blog img,
+.blog-post-full img {
+    width: 100%;
+    max-width: 100%;
+    display: block;
+    object-fit: cover;
+    overflow: hidden;
+}
+
+html {
+    font-size: 16px; /* Base font size */
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #fff;
+    overflow-x: hidden;
+}
+
+/* ==========================
+   TYPOGRAPHY
+========================== */
+h1, h2, h3, h4 {
+    font-family: 'Georgia', serif;
+    color: #1a1a1a;
+    line-height: 1.3;
+}
+
+h1 { font-size: 2.5rem; }
+h2 { font-size: 2rem; }
+h3 { font-size: 1.5rem; }
+h4 { font-size: 1.2rem; }
+
+p, li, a, span {
+    font-size: 1rem;
+}
+
+p {
+    margin-bottom: 1em;
+}
+
+/* ==========================
+   LINKS
+========================== */
+a {
+    text-decoration: none;
+    color: #007b5e;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #004d40;
+}
+
+/* ==========================
+   BUTTONS
+========================== */
+.btn {
+    display: inline-block;
+    --btn-text-color: #fff;
+    font-weight: bold;
+    text-align: center;
+    background-color: #007b5e;
+    color: var(--btn-text-color);
+    padding: 0.75em 1.5em;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: none;
+}
+
+.btn:hover,
+.btn:focus-visible,
+.btn:active {
+    background-color: #004d40;
+    color: var(--btn-text-color);
+    transform: translateY(-2px);
+}
+
+.btn:active {
+    transform: translateY(0);
+}
+
+/* ==========================
+   SECTIONS
+========================== */
+section {
+    padding: 4em 2em;
+}
+
+section h2 {
+    text-align: center;
+    margin-bottom: 2em;
+    font-weight: 700;
+}
+
+/* ==========================
+   GRID LAYOUTS
+========================== */
+.destinations-grid,
+.tours-grid,
+.souvenirs-grid,
+.blog-grid {
+    display: grid;
+    gap: 2em;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+/* ==========================
+   FORMS
+========================== */
+input, select, textarea, button {
+    width: 100%;
+    padding: 0.75em;
+    margin-bottom: 1em;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+input:focus, select:focus, textarea:focus {
+    outline: 2px solid #007b5e;
+    outline-offset: 2px;
+}
+
+/* ==========================
+   HERO IMAGES
+========================== */
+section img {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    margin-bottom: 1em;
+    object-fit: cover;
+}
+
+/* ==========================
+   LISTS
+========================== */
+ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+ul li {
+    margin-bottom: 0.5em;
+}
+
+/* ==========================
+   RESPONSIVE TYPOGRAPHY
+========================== */
+@media (max-width: 1200px) {
+    h1 { font-size: 2.2rem; }
+    h2 { font-size: 1.8rem; }
+    h3 { font-size: 1.3rem; }
+}
+
+@media (max-width: 992px) {
+    h1 { font-size: 2rem; }
+    h2 { font-size: 1.6rem; }
+    h3 { font-size: 1.2rem; }
+    section {
+        padding: 3em 1.5em;
+    }
+    .destinations-grid,
+    .tours-grid,
+    .souvenirs-grid,
+    .blog-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    section {
+        padding: 3em 1.5em;
+    }
+    h1 { font-size: 1.8rem; }
+    h2 { font-size: 1.4rem; }
+    h3 { font-size: 1.1rem; }
+    .btn {
+        padding: 0.65em 1.2em;
+        font-size: 0.95rem;
+    }
+    .destinations-grid,
+    .tours-grid,
+    .souvenirs-grid,
+    .blog-grid {
+        grid-template-columns: 1fr;
+    }
+    input, select, textarea, button {
+        font-size: 0.95rem;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 { font-size: 1.5rem; }
+    h2 { font-size: 1.2rem; }
+    h3 { font-size: 1rem; }
+    h4 { font-size: 1rem; }
+    section {
+        padding: 2em 1em;
+    }
+    .btn {
+        padding: 0.5em 0.8em;
+        font-size: 0.85rem;
+    }
+    p, li, a, span {
+        font-size: 0.95rem;
+    }
+    input, select, textarea, button {
+        padding: 0.6em;
+        font-size: 0.9rem;
+    }
+}
+
+/* ==========================
+   ACCESSIBILITY
+========================== */
+body {
+    color-scheme: light;
+}
+
+button:focus, input:focus, select:focus, textarea:focus {
+    outline: 3px solid #ffc107;
+    outline-offset: 2px;
+}

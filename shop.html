@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="images/logo.png" type="image/png">
+    <link rel="apple-touch-icon" href="images/logo.png">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <meta name="theme-color" content="#004d40">
+    <link rel="canonical" href="https://lovableuganda.com/shop.html">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Explore Uganda Shop | Crafts, Gifts, Decor, Coffee & Artisan Finds">
+    <meta property="og:description" content="Browse more Ugandan products including baskets, jewelry, carvings, home decor, gift boxes, coffee, tea, and artisan collections.">
+    <meta property="og:url" content="https://lovableuganda.com/shop.html">
+    <meta property="og:site_name" content="Explore Uganda">
+    <meta property="og:image" content="https://lovableuganda.com/images/jewelry.webp">
+    <meta property="og:image:alt" content="Explore Uganda full souvenir shop preview">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Explore Uganda Shop | Crafts, Gifts, Decor, Coffee & Artisan Finds">
+    <meta name="twitter:description" content="Shop more artisan products inspired by Uganda, from gift sets and decor to coffee, jewelry, and handmade keepsakes.">
+    <meta name="twitter:image" content="https://lovableuganda.com/images/jewelry.webp">
+    <meta name="twitter:image:alt" content="Explore Uganda full souvenir shop preview">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Explore Uganda Shop | Crafts, Gifts, Decor, Coffee & Artisan Finds</title>
+    <meta name="description" content="Shop a larger selection of Ugandan souvenirs, artisan decor, jewelry, gift boxes, coffee, and handcrafted keepsakes.">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/souvenirs.css">
+</head>
+<body>
+
+    <header>
+        <div class="logo">
+            <img src="images/logo.png" alt="Explore Uganda logo" class="site-logo" width="60" height="60" loading="eager" decoding="sync" />
+            <p class="site-title">Explore Uganda</p>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="destinations.html">Destinations</a></li>
+                <li><a href="tours.html">Tours</a></li>
+                <li class="more-toggle">More</li>
+                <li class="more-item"><a href="souvenirs.html">Souvenirs</a></li>
+                <li class="more-item active"><a href="shop.html">Shop</a></li>
+                <li class="more-item"><a href="blog.html">Blog</a></li>
+                <li class="more-item"><a href="plan-trip.html">Plan My Trip</a></li>
+                <li class="more-item"><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="header-actions">
+            <a href="souvenirs.html" class="cta shop-header-link">Featured Gifts</a>
+        </div>
+        <div class="cart-shell">
+            <button type="button" class="cta cart-toggle cart-link" id="cart-toggle" aria-expanded="false" aria-controls="souvenir-cart-panel">
+                Cart <span id="cart-count">0</span>
+            </button>
+            <div id="souvenir-cart-panel" class="cart-dropdown" hidden>
+                <div class="cart-dropdown-header">
+                    <h2>Your Cart</h2>
+                    <button type="button" id="close-cart" class="close-cart" aria-label="Close cart">×</button>
+                </div>
+                <ul id="cart-items" class="cart-items">
+                    <li class="cart-empty">Your cart is empty right now.</li>
+                </ul>
+                <div class="cart-actions">
+                    <div class="cart-summary-block">
+                        <p class="cart-summary">Items in cart: <span id="cart-total-items">0</span></p>
+                        <p class="cart-summary selected-summary">Selected for checkout: <span id="cart-selected-items">0</span></p>
+                    </div>
+                    <div class="cart-action-buttons">
+                        <button type="button" id="clear-cart" class="btn secondary-btn">Clear Cart</button>
+                        <button type="button" id="checkout-cart" class="btn">Checkout Selected</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section id="hero-souvenirs">
+        <h1>Shop More of Uganda's Creative Finds</h1>
+        <p>Browse a wider collection of artisan gifts, home accents, travel-ready keepsakes, and Uganda-inspired treats.</p>
+    </section>
+
+    <section class="shop-intro">
+        <h2>Curated For Gifting, Collecting, And Remembering The Journey</h2>
+        <p>This full shop expands the featured souvenirs with more products across decor, accessories, coffee gifts, and artisan-made keepsakes. Add items to your cart and continue to checkout whenever you're ready.</p>
+        <div class="shop-badges" aria-label="Shop highlights">
+            <span class="shop-badge">Handmade finds</span>
+            <span class="shop-badge">Gift-ready picks</span>
+            <span class="shop-badge">Home decor accents</span>
+            <span class="shop-badge">Coffee and culture boxes</span>
+        </div>
+    </section>
+
+    <section id="souvenirs-list">
+        <h2>Shop All Products</h2>
+        <div class="souvenir-toolbar">
+            <p class="market-note">A curated collection of artisan pieces for meaningful gifting.</p>
+            <div class="currency-tools">
+                <label for="currency-select" class="currency-picker">
+                    <span>Show prices in</span>
+                    <select id="currency-select" aria-label="Choose currency">
+                        <option value="UGX">UGX</option>
+                        <option value="USD">USD</option>
+                        <option value="EUR">EUR</option>
+                        <option value="GBP">GBP</option>
+                        <option value="KES">KES</option>
+                        <option value="AED">AED</option>
+                    </select>
+                </label>
+                <p class="currency-note">Approximate conversions shown for quick comparison.</p>
+            </div>
+        </div>
+
+        <div class="souvenirs-grid">
+            <article class="souvenir" data-price-ugx="165000">
+                <img src="images/woven-chairs-on-porch.jpg" alt="Handwoven craftwork in Uganda" width="480" height="320" loading="lazy" decoding="async" />
+                <h3>Handcrafted Baskets</h3>
+                <p>Beautifully woven baskets made by local artisans. Perfect for home decor or gifts.</p>
+                <p class="souvenir-price">From <span class="price-value" data-price-ugx="165000">UGX 165,000</span></p>
+                <button type="button" class="btn add-to-cart" data-item="Handcrafted Baskets">Add to Cart</button>
+            </article>
+
+            <article class="souvenir" data-price-ugx="65000">
+                <img src="images/jewelry.webp" alt="Ugandan beaded necklaces and bracelets" width="480" height="320" loading="lazy" decoding="async" />
+                <h3>Beaded Jewelry</h3>
+                <p>Colorful necklaces, bracelets, and earrings handcrafted by Ugandan artisans.</p>
+                <p class="souvenir-price">From <span class="price-value" data-price-ugx="65000">UGX 65,000</span></p>
+                <button type="button" class="btn add-to-cart" data-item="Beaded Jewelry">Add to Cart</button>
+            </article>
+
+            <article class="souvenir" data-price-ugx="150000">
+                <img src="images/masks.webp" alt="Traditional Ugandan wooden masks" width="480" height="320" loading="lazy" decoding="async" />
+                <h3>Traditional Masks</h3>
+                <p>Hand-carved wooden masks reflecting Uganda's rich cultural heritage.</p>
+                <p class="souvenir-price">From <span class="price-value" data-price-ugx="150000">UGX 150,000</span></p>
+                <button type="button" class="btn add-to-cart" data-item="Traditional Masks">Add to Cart</button>
+            </article>
+
+            <article class="souvenir" data-price-ugx="55000">
+                <img src="images/coffee-tea.webp" alt="Ugandan coffee and tea products" width="480" height="320" loading="lazy" decoding="async" />
+                <h3>Ugandan Coffee & Tea</h3>
+                <p>Premium coffee and tea products grown and packaged in Uganda.</p>
+                <p class="souvenir-price">From <span class="price-value" data-price-ugx="55000">UGX 55,000</span></p>
+                <button type="button" class="btn add-to-cart" data-item="Ugandan Coffee & Tea">Add to Cart</button>
+            </article>
+
+            <article class="souvenir" data-price-ugx="295000">
+                <img src="images/traditional-dance-performance.jpg" alt="Ugandan cultural performance and artistic expression" width="480" height="320" loading="lazy" decoding="async" />
+                <h3>Local Art & Paintings</h3>
+                <p>Original artworks by Ugandan artists, perfect as souvenirs or gifts.</p>
+                <p class="souvenir-price">From <span class="price-value" data-price-ugx="295000">UGX 295,000</span></p>
+                <button type="button" class="btn add-to-cart" data-item="Local Art & Paintings">Add to Cart</button>
+            </article>
+
+            <article class="souvenir" data-price-ugx="85000">
+                <img src="images/logo.png" alt="Explore Uganda branded t-shirt" width="480" height="320" loading="lazy" decoding="async" />
+                <h3>Explore Uganda T-Shirt</h3>
+                <p>A comfortable branded keepsake designed for travelers who want to carry the journey with them.</p>
+                <p class="souvenir-price">From <span class="price-value" data-price-ugx="85000">UGX 85,000</span></p>
+                <button type="button" class="btn add-to-cart" data-item="Explore Uganda T-Shirt">Add to Cart</button>
+            </article>
+
+            <article class="souvenir" data-price-ugx="98000">
+                <img src="images/woven-chairs-on-porch.jpg" alt="Handwoven craftwork and woven furnishings" width="480" height="320" loading="lazy" decoding="async" />
+                <h3>Woven Table Mats</h3>
+                <p>Textured table accents with artisan patterns that bring warm Ugandan craft into everyday dining.</p>
+                <p class="souvenir-price">From <span class="price-value" data-price-ugx="98000">UGX 98,000</span></p>
+                <button type="button" class="btn add-to-cart" data-item="Woven Table Mats">Add to Cart</button>
+            </article>
+
+            <article class="souvenir" data-price-ugx="87000">
+                <img src="images/jewelry.webp" alt="Cow horn and bead statement earrings" width="480" height="320" loading="lazy" decoding="async" />
+                <h3>Statement Earrings</h3>
+                <p>Bold artisan earrings combining beadwork and polished natural materials for special occasions.</p>
+                <p class="souvenir-price">From <span class="price-value" data-price-ugx="87000">UGX 87,000</span></p>
+                <button type="button" class="btn add-to-cart" data-item="Statement Earrings">Add to Cart</button>
+            </article>
+
+            <article class="souvenir" data-price-ugx="210000">
+                <img src="images/masks.webp" alt="Decorative wood carving gift set" width="480" height="320" loading="lazy" decoding="async" />
+                <h3>Wood Carving Gift Set</h3>
+                <p>A curated pair of carved decorative pieces suited for shelves, desks, and thoughtful gifting.</p>
+                <p class="souvenir-price">From <span class="price-value" data-price-ugx="210000">UGX 210,000</span></p>
+                <button type="button" class="btn add-to-cart" data-item="Wood Carving Gift Set">Add to Cart</button>
+            </article>
+
+            <article class="souvenir" data-price-ugx="74000">
+                <img src="images/market-ug-meeting.webp" alt="Ugandan spice and market gift box" width="480" height="320" loading="lazy" decoding="async" />
+                <h3>Market Spice Gift Box</h3>
+                <p>A flavorful set inspired by local market finds, packed for easy gifting and travel memories.</p>
+                <p class="souvenir-price">From <span class="price-value" data-price-ugx="74000">UGX 74,000</span></p>
+                <button type="button" class="btn add-to-cart" data-item="Market Spice Gift Box">Add to Cart</button>
+            </article>
+
+            <article class="souvenir" data-price-ugx="120000">
+                <img src="images/traditional-dance-performance.jpg" alt="Bark cloth wall hanging inspired by Ugandan cultural motifs" width="480" height="320" loading="lazy" decoding="async" />
+                <h3>Bark Cloth Wall Hanging</h3>
+                <p>A heritage-inspired decor piece with earthy tones and handcrafted texture for modern interiors.</p>
+                <p class="souvenir-price">From <span class="price-value" data-price-ugx="120000">UGX 120,000</span></p>
+                <button type="button" class="btn add-to-cart" data-item="Bark Cloth Wall Hanging">Add to Cart</button>
+            </article>
+
+            <article class="souvenir" data-price-ugx="68000">
+                <img src="images/happy_ugandans.webp" alt="Festival fabric tote bag inspired by Ugandan culture" width="480" height="320" loading="lazy" decoding="async" />
+                <h3>Festival Fabric Tote</h3>
+                <p>An everyday carry bag with vibrant prints inspired by performance, celebration, and local color.</p>
+                <p class="souvenir-price">From <span class="price-value" data-price-ugx="68000">UGX 68,000</span></p>
+                <button type="button" class="btn add-to-cart" data-item="Festival Fabric Tote">Add to Cart</button>
+            </article>
+
+            <article class="souvenir" data-price-ugx="90000">
+                <img src="images/mabira-forest.webp" alt="Mabira forest honey and wellness bundle" width="480" height="320" loading="lazy" decoding="async" />
+                <h3>Mabira Forest Honey Set</h3>
+                <p>A comforting bundle inspired by Uganda's lush forest regions, ideal for gifting and tea lovers.</p>
+                <p class="souvenir-price">From <span class="price-value" data-price-ugx="90000">UGX 90,000</span></p>
+                <button type="button" class="btn add-to-cart" data-item="Mabira Forest Honey Set">Add to Cart</button>
+            </article>
+
+            <article class="souvenir" data-price-ugx="135000">
+                <img src="images/Kampala-Capital-City.webp" alt="Framed Kampala city print souvenir" width="480" height="320" loading="lazy" decoding="async" />
+                <h3>Kampala City Print</h3>
+                <p>A framed travel print celebrating Kampala's energy, skyline, and memorable urban character.</p>
+                <p class="souvenir-price">From <span class="price-value" data-price-ugx="135000">UGX 135,000</span></p>
+                <button type="button" class="btn add-to-cart" data-item="Kampala City Print">Add to Cart</button>
+            </article>
+
+            <article class="souvenir" data-price-ugx="112000">
+                <img src="images/ssese-islands.webp" alt="Ssese Islands candle and beach-inspired gift set" width="480" height="320" loading="lazy" decoding="async" />
+                <h3>Ssese Island Escape Candle</h3>
+                <p>A relaxed lifestyle gift inspired by breezy island evenings and Lake Victoria getaway moods.</p>
+                <p class="souvenir-price">From <span class="price-value" data-price-ugx="112000">UGX 112,000</span></p>
+                <button type="button" class="btn add-to-cart" data-item="Ssese Island Escape Candle">Add to Cart</button>
+            </article>
+        </div>
+    </section>
+
+    <section id="cta-souvenirs">
+        <h2>Need Help Choosing The Right Gift?</h2>
+        <a href="contact.html" class="btn">Ask About Availability</a>
+    </section>
+
+    <footer>
+        <div class="footer-about">
+            <img src="images/logo.png" alt="Explore Uganda logo" class="footer-logo" />
+            <h2>Explore Uganda</h2>
+            <p>Discover the Pearl of Africa. Your journey to Uganda's wildlife, culture, and adventure begins here.</p>
+        </div>
+
+        <div class="footer-links">
+            <h3>Quick Links</h3>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="destinations.html">Destinations</a></li>
+                <li><a href="tours.html">Tours</a></li>
+                <li class="footer-desktop-only"><a href="blog.html">Blog</a></li>
+                <li class="footer-desktop-only"><a href="souvenirs.html">Souvenirs</a></li>
+                <li class="footer-desktop-only"><a href="shop.html">Shop</a></li>
+                <li><a href="plan-trip.html">Plan My Trip</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li class="footer-desktop-only"><a href="privacy-policy.html">Privacy Policy</a></li>
+                <li class="footer-desktop-only"><a href="booking-terms.html">Booking Terms</a></li>
+                <li class="footer-desktop-only"><a href="returns-refund-policy.html">Returns & Refunds</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-shop footer-mobile-only">
+            <h3>Shop</h3>
+            <ul>
+                <li><a href="souvenirs.html">Featured Souvenirs</a></li>
+                <li><a href="shop.html">Shop All</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-legal footer-mobile-only">
+            <h3>Legal</h3>
+            <ul>
+                <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                <li><a href="booking-terms.html">Booking Terms</a></li>
+                <li><a href="returns-refund-policy.html">Returns & Refunds</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-contact-social">
+            <h3>Contact Us & Follow Us</h3>
+            <ul>
+                <li>Email: info@lovableuganda.com</li>
+                <li>Phone: +256 757 714 664</li>
+                <li>WhatsApp: <a href="https://wa.me/256773167457" target="_blank">+256 773 167 457</a></li>
+                <li>Address: Kampala, Uganda</li>
+            </ul>
+            <div class="footer-social">
+                <ul>
+                    <li><a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
+                    <li><a href="#" target="_blank"><i class="fab fa-instagram"></i></a></li>
+                    <li><a href="#" target="_blank"><i class="fab fa-x-twitter"></i></a></li>
+                    <li><a href="#" target="_blank"><i class="fab fa-tiktok"></i></a></li>
+                    <li><a href="#" target="_blank"><i class="fab fa-youtube"></i></a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-subscribe">
+            <h3>Subscribe to Our Newsletter</h3>
+            <p>Stay updated with the latest news and offers.</p>
+            <form action="https://formspree.io/f/xlgpqzog" method="POST">
+                <input type="email" name="email" placeholder="Enter your email" autocomplete="email" required>
+                <button type="submit">Subscribe</button>
+            </form>
+        </div>
+
+        <p>&copy; 2026 Explore Uganda. All rights reserved.</p>
+    </footer>
+
+<script>
+    const moreToggle = document.querySelector('.more-toggle');
+    const moreItems = document.querySelectorAll('.more-item');
+
+    if (moreToggle) {
+        moreToggle.addEventListener('click', () => {
+            const isExpanded = moreToggle.textContent === 'Less';
+            moreItems.forEach(item => {
+                item.style.display = isExpanded ? 'none' : 'block';
+            });
+            moreToggle.textContent = isExpanded ? 'More' : 'Less';
+        });
+    }
+</script>
+
+<script>
+    const cartStorageKey = 'explore-uganda-souvenir-cart';
+    const addToCartButtons = document.querySelectorAll('.add-to-cart');
+    const priceEls = document.querySelectorAll('.price-value');
+    const currencySelect = document.getElementById('currency-select');
+    const cartItemsEl = document.getElementById('cart-items');
+    const cartCountEl = document.getElementById('cart-count');
+    const cartTotalItemsEl = document.getElementById('cart-total-items');
+    const cartSelectedItemsEl = document.getElementById('cart-selected-items');
+    const clearCartButton = document.getElementById('clear-cart');
+    const checkoutCartButton = document.getElementById('checkout-cart');
+    const cartToggle = document.getElementById('cart-toggle');
+    const cartPanel = document.getElementById('souvenir-cart-panel');
+    const closeCartButton = document.getElementById('close-cart');
+    const checkoutStorageKey = 'explore-uganda-souvenir-checkout';
+    const currencyStorageKey = 'explore-uganda-souvenir-currency';
+    const currencyRates = {
+        UGX: 1,
+        USD: 1 / 3771.509776,
+        EUR: 1 / 4357.369467,
+        GBP: 1 / 5022.307717,
+        KES: 1 / 28.9844,
+        AED: 1 / 1024.942801
+    };
+    const currencySymbols = {
+        UGX: 'UGX',
+        USD: '$',
+        EUR: '€',
+        GBP: '£',
+        KES: 'KES',
+        AED: 'AED'
+    };
+    const productPrices = {
+        'Handcrafted Baskets': 165000,
+        'Beaded Jewelry': 65000,
+        'Traditional Masks': 150000,
+        'Ugandan Coffee & Tea': 55000,
+        'Local Art & Paintings': 295000,
+        'Explore Uganda T-Shirt': 85000,
+        'Woven Table Mats': 98000,
+        'Statement Earrings': 87000,
+        'Wood Carving Gift Set': 210000,
+        'Market Spice Gift Box': 74000,
+        'Bark Cloth Wall Hanging': 120000,
+        'Festival Fabric Tote': 68000,
+        'Mabira Forest Honey Set': 90000,
+        'Kampala City Print': 135000,
+        'Ssese Island Escape Candle': 112000
+    };
+
+    const getSelectedCurrency = () => localStorage.getItem(currencyStorageKey) || 'UGX';
+
+    const formatMoney = (amountInUgx, currencyCode) => {
+        const rate = currencyRates[currencyCode] || 1;
+        const convertedAmount = amountInUgx * rate;
+
+        if (currencyCode === 'UGX') {
+            return `UGX ${Math.round(convertedAmount).toLocaleString()}`;
+        }
+
+        if (currencyCode === 'USD' || currencyCode === 'EUR' || currencyCode === 'GBP') {
+            return `${currencySymbols[currencyCode]}${convertedAmount.toFixed(2)}`;
+        }
+
+        return `${currencySymbols[currencyCode]} ${convertedAmount.toFixed(2)}`;
+    };
+
+    const updateDisplayedPrices = () => {
+        const currentCurrency = getSelectedCurrency();
+
+        if (currencySelect) {
+            currencySelect.value = currentCurrency;
+        }
+
+        priceEls.forEach((priceEl) => {
+            const ugxPrice = Number(priceEl.dataset.priceUgx || 0);
+            priceEl.textContent = formatMoney(ugxPrice, currentCurrency);
+        });
+    };
+
+    const getCart = () => {
+        try {
+            return JSON.parse(localStorage.getItem(cartStorageKey)) || [];
+        } catch (error) {
+            return [];
+        }
+    };
+
+    const saveCart = (cart) => {
+        localStorage.setItem(cartStorageKey, JSON.stringify(cart));
+    };
+
+    const renderCart = () => {
+        const cart = getCart();
+        const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+        const selectedItems = cart
+            .filter((item) => item.selected)
+            .reduce((sum, item) => sum + item.quantity, 0);
+        const currentCurrency = getSelectedCurrency();
+
+        if (cartCountEl) {
+            cartCountEl.textContent = String(totalItems);
+        }
+
+        if (cartTotalItemsEl) {
+            cartTotalItemsEl.textContent = String(totalItems);
+        }
+
+        if (cartSelectedItemsEl) {
+            cartSelectedItemsEl.textContent = String(selectedItems);
+        }
+
+        if (clearCartButton) {
+            clearCartButton.disabled = cart.length === 0;
+        }
+
+        if (checkoutCartButton) {
+            checkoutCartButton.disabled = selectedItems === 0;
+        }
+
+        if (!cartItemsEl) {
+            return;
+        }
+
+        cartItemsEl.innerHTML = '';
+
+        if (cart.length === 0) {
+            cartItemsEl.innerHTML = '<li class="cart-empty">Your cart is empty right now.</li>';
+            return;
+        }
+
+        cart.forEach((item) => {
+            const listItem = document.createElement('li');
+            listItem.className = 'cart-item';
+            listItem.innerHTML = `
+                <div class="cart-item-main">
+                    <label class="cart-item-check">
+                        <input type="checkbox" class="cart-select-item" data-item="${item.name}" ${item.selected ? 'checked' : ''} />
+                        <span>${item.name}</span>
+                    </label>
+                    <div class="cart-quantity-controls">
+                        <button type="button" class="qty-btn" data-action="decrease" data-item="${item.name}">-</button>
+                        <span class="qty-value">${item.quantity}</span>
+                        <button type="button" class="qty-btn" data-action="increase" data-item="${item.name}">+</button>
+                    </div>
+                </div>
+                <div class="cart-item-actions">
+                    <p>${formatMoney((productPrices[item.name] || 0) * item.quantity, currentCurrency)}</p>
+                    <button type="button" class="remove-cart-item" data-item="${item.name}">Remove</button>
+                </div>
+            `;
+            cartItemsEl.appendChild(listItem);
+        });
+
+        cartItemsEl.querySelectorAll('.cart-select-item').forEach((checkbox) => {
+            checkbox.addEventListener('change', () => {
+                const updatedCart = getCart().map((item) =>
+                    item.name === checkbox.dataset.item ? { ...item, selected: checkbox.checked } : item
+                );
+                saveCart(updatedCart);
+                renderCart();
+            });
+        });
+
+        cartItemsEl.querySelectorAll('.qty-btn').forEach((button) => {
+            button.addEventListener('click', () => {
+                const action = button.dataset.action;
+                const itemName = button.dataset.item;
+                const updatedCart = getCart()
+                    .map((item) => {
+                        if (item.name !== itemName) {
+                            return item;
+                        }
+
+                        const nextQuantity = action === 'increase' ? item.quantity + 1 : item.quantity - 1;
+                        return { ...item, quantity: nextQuantity };
+                    })
+                    .filter((item) => item.quantity > 0);
+
+                saveCart(updatedCart);
+                renderCart();
+            });
+        });
+
+        cartItemsEl.querySelectorAll('.remove-cart-item').forEach((button) => {
+            button.addEventListener('click', () => {
+                const itemName = button.dataset.item;
+                const updatedCart = getCart().filter((item) => item.name !== itemName);
+                saveCart(updatedCart);
+                renderCart();
+            });
+        });
+    };
+
+    addToCartButtons.forEach((button) => {
+        button.addEventListener('click', () => {
+            const itemName = button.dataset.item;
+            const cart = getCart();
+            const existingItem = cart.find((item) => item.name === itemName);
+
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({ name: itemName, quantity: 1, selected: true });
+            }
+
+            saveCart(cart);
+            renderCart();
+            if (cartPanel && cartToggle) {
+                cartPanel.hidden = false;
+                cartToggle.setAttribute('aria-expanded', 'true');
+            }
+        });
+    });
+
+    if (clearCartButton) {
+        clearCartButton.addEventListener('click', () => {
+            saveCart([]);
+            renderCart();
+        });
+    }
+
+    if (cartToggle && cartPanel) {
+        cartToggle.addEventListener('click', () => {
+            const isOpen = !cartPanel.hidden;
+            cartPanel.hidden = isOpen;
+            cartToggle.setAttribute('aria-expanded', String(!isOpen));
+        });
+    }
+
+    if (cartToggle) {
+        cartToggle.addEventListener('click', (event) => {
+            event.stopPropagation();
+        });
+    }
+
+    if (cartPanel) {
+        cartPanel.addEventListener('click', (event) => {
+            event.stopPropagation();
+        });
+    }
+
+    if (closeCartButton && cartPanel && cartToggle) {
+        closeCartButton.addEventListener('click', () => {
+            cartPanel.hidden = true;
+            cartToggle.setAttribute('aria-expanded', 'false');
+        });
+    }
+
+    document.addEventListener('click', (event) => {
+        if (!cartPanel || !cartToggle || cartPanel.hidden) {
+            return;
+        }
+
+        const clickedInsideCart = cartPanel.contains(event.target);
+        const clickedToggle = cartToggle.contains(event.target);
+
+        if (!clickedInsideCart && !clickedToggle) {
+            cartPanel.hidden = true;
+            cartToggle.setAttribute('aria-expanded', 'false');
+        }
+    });
+
+    if (checkoutCartButton) {
+        checkoutCartButton.addEventListener('click', () => {
+            const selectedItems = getCart().filter((item) => item.selected);
+
+            if (selectedItems.length === 0) {
+                alert('Please tick at least one product to check out.');
+                return;
+            }
+
+            localStorage.setItem(checkoutStorageKey, JSON.stringify(selectedItems));
+            window.location.href = 'souvenir-checkout.html';
+        });
+    }
+
+    if (currencySelect) {
+        currencySelect.value = getSelectedCurrency();
+        currencySelect.addEventListener('change', () => {
+            localStorage.setItem(currencyStorageKey, currencySelect.value);
+            updateDisplayedPrices();
+            renderCart();
+        });
+    }
+
+    updateDisplayedPrices();
+    renderCart();
+</script>
+
+</body>
+</html>

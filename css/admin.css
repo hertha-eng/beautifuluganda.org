@@ -1,0 +1,260 @@
+.admin-main {
+    width: min(1180px, 100% - 2rem);
+    margin: 0 auto;
+    padding: 2rem 0 4rem;
+}
+
+.admin-hero,
+.admin-toolbar,
+.admin-page-nav,
+.admin-note,
+.admin-panel {
+    margin-bottom: 1.5rem;
+    padding: 1.4rem;
+    border-radius: 16px;
+    background: #ffffff;
+    border: 1px solid rgba(0, 77, 64, 0.1);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.05);
+}
+
+.admin-hero {
+    background: linear-gradient(135deg, rgba(0, 123, 94, 0.1), rgba(255, 193, 7, 0.12));
+}
+
+.admin-kicker {
+    margin-bottom: 0.5rem;
+    color: #007b5e;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.admin-toolbar,
+.admin-toolbar-actions,
+.admin-page-nav,
+.admin-panel-header,
+.repeater-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.admin-page-nav {
+    position: sticky;
+    top: 0.75rem;
+    z-index: 20;
+    background: rgba(255, 255, 255, 0.94);
+    backdrop-filter: blur(8px);
+}
+
+.admin-toolbar .btn,
+.admin-panel .btn {
+    width: auto;
+    margin: 0;
+}
+
+.admin-toolbar .secondary-btn,
+.admin-panel .secondary-btn {
+    background: #ffffff;
+    color: #004d40;
+    border: 1px solid rgba(0, 77, 64, 0.18);
+}
+
+.admin-toolbar .secondary-btn:hover,
+.admin-panel .secondary-btn:hover {
+    background: #004d40;
+    color: #ffffff;
+}
+
+.admin-status {
+    margin-bottom: 0;
+    color: #466055;
+    font-weight: 700;
+}
+
+.admin-sections {
+    display: grid;
+    gap: 1.5rem;
+}
+
+.admin-panel-header h3,
+.field-group h4,
+.repeater-card h4 {
+    color: #004d40;
+}
+
+.field-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem 1.1rem;
+}
+
+.field-group {
+    display: grid;
+    gap: 0.8rem;
+}
+
+.field-group + .field-group {
+    margin-top: 1rem;
+}
+
+.admin-panel label {
+    display: block;
+    margin-bottom: 0.35rem;
+    color: #20483d;
+    font-weight: 700;
+}
+
+.full-width {
+    grid-column: 1 / -1;
+}
+
+.repeater-list {
+    display: grid;
+    gap: 1rem;
+}
+
+.repeater-card {
+    padding: 1rem;
+    border-radius: 14px;
+    background: #f8fbfa;
+    border: 1px solid rgba(0, 77, 64, 0.08);
+}
+
+.repeater-card-header {
+    margin-bottom: 0.9rem;
+}
+
+.small-button {
+    width: auto;
+    margin: 0;
+    padding: 0.6rem 0.9rem;
+    border: 1px solid rgba(0, 77, 64, 0.18);
+    border-radius: 999px;
+    background: #fff;
+    color: #004d40;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.small-button:hover {
+    background: #004d40;
+    color: #fff;
+}
+
+.blog-file-panel {
+    scroll-margin-top: 6rem;
+}
+
+.blog-file-note,
+.blog-editor-helper,
+.blog-file-path {
+    color: #4d645c;
+}
+
+.blog-file-status {
+    margin: 0.75rem 0 0;
+    font-weight: 700;
+}
+
+.blog-file-status[data-state="ok"] {
+    color: #0a6c51;
+}
+
+.blog-file-status[data-state="warning"] {
+    color: #9a6a00;
+}
+
+.blog-file-status[data-state="error"] {
+    color: #a32a2a;
+}
+
+.blog-editor-layout {
+    display: grid;
+    grid-template-columns: minmax(240px, 300px) minmax(0, 1fr);
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.blog-editor-sidebar,
+.blog-editor-main {
+    padding: 1rem;
+    border-radius: 14px;
+    background: #f8fbfa;
+    border: 1px solid rgba(0, 77, 64, 0.08);
+}
+
+.blog-editor-sidebar h4 {
+    margin-bottom: 0.85rem;
+}
+
+.blog-editor-list {
+    display: grid;
+    gap: 0.75rem;
+    max-height: 70vh;
+    overflow-y: auto;
+}
+
+.blog-article-link {
+    display: grid;
+    gap: 0.2rem;
+    width: 100%;
+    padding: 0.85rem 0.9rem;
+    text-align: left;
+    border-radius: 12px;
+    border: 1px solid rgba(0, 77, 64, 0.1);
+    background: #ffffff;
+    color: #23453c;
+    cursor: pointer;
+}
+
+.blog-article-link.is-active,
+.blog-article-link:hover {
+    border-color: rgba(0, 77, 64, 0.35);
+    background: rgba(0, 123, 94, 0.08);
+}
+
+.blog-article-link span,
+.blog-article-link small {
+    color: #58726a;
+}
+
+.blog-editor-form {
+    display: grid;
+    gap: 1rem;
+}
+
+.blog-editor-grid textarea,
+.blog-editor-form textarea[name="articleHtml"] {
+    min-height: 7rem;
+    resize: vertical;
+}
+
+.blog-editor-form textarea[name="articleHtml"] {
+    min-height: 24rem;
+    font-family: "Courier New", Courier, monospace;
+}
+
+@media (max-width: 768px) {
+    .field-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .admin-main {
+        width: min(100% - 1rem, 100%);
+    }
+
+    .admin-page-nav {
+        top: 0.5rem;
+    }
+
+    .blog-editor-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .blog-editor-list {
+        max-height: none;
+    }
+}

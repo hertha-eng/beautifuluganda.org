@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Explore Uganda Admin</title>
+    <link rel="icon" href="images/logo.png" type="image/png">
+    <link rel="apple-touch-icon" href="images/logo.png">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="images/logo.png" alt="Explore Uganda logo" class="site-logo" />
+            <h1>Explore Uganda</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">View Site</a></li>
+                <li class="active"><a href="admin.html">Admin</a></li>
+                <li><a href="platform.html">Platform</a></li>
+                
+                <li><a href="destinations.html">Destinations</a></li>
+                <li><a href="tours.html">Tours</a></li>
+                <li class="more-item"><a href="blog.html">Blog</a></li>
+            </ul>
+        </nav>
+        <a href="index.html" class="cta">Open Website</a>
+    </header>
+
+    <main class="admin-main">
+        <section class="admin-hero">
+            <p class="admin-kicker">Simple Content Dashboard</p>
+            <h2>Update key website sections without editing code</h2>
+            <p>This admin tool saves changes in this browser, so your team can update hero text, featured cards, tours, destinations, and blog listings with basic computer knowledge.</p>
+        </section>
+
+        <section class="admin-toolbar">
+            <div class="admin-toolbar-actions">
+                <button type="button" class="btn" id="save-admin-content">Save Changes</button>
+                <button type="button" class="btn secondary-btn" id="import-admin-content">Paste Backup JSON</button>
+                <button type="button" class="btn secondary-btn" id="reset-admin-content">Reset to Default</button>
+                <button type="button" class="btn secondary-btn" id="export-admin-content">Copy Backup JSON</button>
+            </div>
+            <p id="admin-status" class="admin-status" aria-live="polite">No changes saved yet.</p>
+        </section>
+
+        <nav class="admin-page-nav" aria-label="Admin page sections">
+            <a href="platform.html" class="small-button">Supabase Platform</a>
+            <a href="#admin-home" class="small-button">Home</a>
+            <a href="#admin-destinations" class="small-button">Destinations</a>
+            <a href="#admin-tours" class="small-button">Tours</a>
+            <a href="#admin-souvenirs" class="small-button">Souvenirs</a>
+            <a href="#admin-blog" class="small-button">Blog</a>
+        </nav>
+
+        <section class="admin-note">
+            <h3>Important Note</h3>
+            <p>This version is designed for a static website. It works well for local editing and simple administration, but changes are stored only in this browser unless you later connect it to a real database or CMS.</p>
+        </section>
+
+        <div id="admin-sections" class="admin-sections"></div>
+    </main>
+
+    <script src="js/site-content.js"></script>
+    <script src="js/generated-blog-cards.js"></script>
+    <script src="js/site-runtime.js"></script>
+    <script src="js/admin.js"></script>
+    <script>
+        const moreToggle = document.querySelector('.more-toggle');
+        const moreItems = document.querySelectorAll('.more-item');
+
+        if (moreToggle) {
+            moreToggle.addEventListener('click', () => {
+                const isExpanded = moreToggle.textContent === 'Less';
+                moreItems.forEach((item) => {
+                    item.style.display = isExpanded ? 'none' : 'block';
+                });
+                moreToggle.textContent = isExpanded ? 'More' : 'Less';
+            });
+        }
+    </script>
+</body>
+</html>

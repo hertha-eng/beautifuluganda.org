@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="images/logo.png" type="image/png">
+    <link rel="apple-touch-icon" href="images/logo.png">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="theme-color" content="#004d40">
+    <link rel="canonical" href="https://lovableuganda.com/souvenir-checkout.html">
+    <title>Explore Uganda - Souvenir Checkout</title>
+    <meta name="description" content="Secure checkout for Ugandan souvenirs with shipping and billing details.">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/souvenir-checkout.css">
+</head>
+<body>
+
+    <header>
+        <div class="logo">
+            <img src="images/logo.png" alt="Explore Uganda logo" class="site-logo" />
+            <p class="site-title">Explore Uganda</p>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="destinations.html">Destinations</a></li>
+                <li><a href="tours.html">Tours</a></li>
+                                <li class="more-toggle">More</li>
+                <li class="more-item active"><a href="souvenirs.html">Souvenirs</a></li>
+                <li class="more-item"><a href="blog.html">Blog</a></li>
+                <li class="more-item"><a href="plan-trip.html">Plan My Trip</a></li>
+                <li class="more-item"><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+        <a href="souvenirs.html" class="cta">Back to Shop</a>
+    </header>
+
+    <section id="hero-checkout">
+        <h2>Secure Souvenir Checkout</h2>
+        <p>Complete your order with shipping and billing details, then continue to payment.</p>
+    </section>
+
+    <main id="checkout-page">
+        <section class="checkout-shell">
+            <div class="checkout-copy">
+                <div class="notice-card">
+                    <h3>Shipping Notice</h3>
+                    <p>We currently prioritize delivery within Uganda. If you request shipping outside Uganda, the final shipping cost may increase and will be confirmed before dispatch.</p>
+                </div>
+
+                <div class="notice-card payment-card">
+                    <h3>Payment Status</h3>
+                    <p>This page supports Flutterwave hosted payment, but live card or mobile money checkout should only be enabled after your real public key and live redirect URL have been added.</p>
+                </div>
+
+                <div class="order-summary-card">
+                    <div class="summary-header">
+                        <h3>Your Order</h3>
+                        <span id="checkout-currency-badge">UGX</span>
+                    </div>
+                    <ul id="checkout-items" class="checkout-items">
+                        <li class="checkout-empty">No selected items yet.</li>
+                    </ul>
+                    <div class="summary-totals">
+                        <p>Estimated subtotal <span id="checkout-subtotal">UGX 0</span></p>
+                        <p class="summary-charged">Charged at checkout <span id="checkout-subtotal-ugx">UGX 0</span></p>
+                    </div>
+                </div>
+            </div>
+
+            <form id="checkout-form" class="checkout-form" method="POST" action="https://checkout.flutterwave.com/v3/hosted/pay">
+                <input type="hidden" name="public_key" id="flw-public-key" value="FLWPUBK_YOUR_PUBLIC_KEY" />
+                <input type="hidden" name="tx_ref" id="checkout-tx-ref" value="" />
+                <input type="hidden" name="amount" id="checkout-amount" value="0" />
+                <input type="hidden" name="currency" value="UGX" />
+                <input type="hidden" name="payment_options" value="card,mobilemoneyuganda" />
+                <input type="hidden" name="redirect_url" value="https://lovableuganda.com/souvenir-payment-success.html" />
+                <input type="hidden" name="customizations[title]" value="Explore Uganda Souvenirs" />
+                <input type="hidden" name="customizations[description]" value="Checkout for authentic Ugandan souvenirs." />
+                <input type="hidden" name="customer[name]" id="customer-name-hidden" value="" />
+                <input type="hidden" name="customer[email]" id="customer-email-hidden" value="" />
+                <input type="hidden" name="meta[customer_phone]" id="customer-phone-hidden" value="" />
+                <input type="hidden" name="meta[order_items]" id="order-items-hidden" value="" />
+                <input type="hidden" name="meta[display_currency]" id="display-currency-hidden" value="UGX" />
+                <input type="hidden" name="meta[shipping_line1]" id="shipping-line1-hidden" value="" />
+                <input type="hidden" name="meta[shipping_line2]" id="shipping-line2-hidden" value="" />
+                <input type="hidden" name="meta[shipping_city]" id="shipping-city-hidden" value="" />
+                <input type="hidden" name="meta[shipping_postcode]" id="shipping-postcode-hidden" value="" />
+                <input type="hidden" name="meta[shipping_country]" id="shipping-country-hidden" value="" />
+                <input type="hidden" name="meta[shipping_notes]" id="shipping-notes-hidden" value="" />
+                <input type="hidden" name="meta[billing_line1]" id="billing-line1-hidden" value="" />
+                <input type="hidden" name="meta[billing_line2]" id="billing-line2-hidden" value="" />
+                <input type="hidden" name="meta[billing_city]" id="billing-city-hidden" value="" />
+                <input type="hidden" name="meta[billing_postcode]" id="billing-postcode-hidden" value="" />
+                <input type="hidden" name="meta[billing_country]" id="billing-country-hidden" value="" />
+
+                <h3>Customer Details</h3>
+                <div class="form-grid">
+                    <div>
+                        <label for="checkout-name">Full Name</label>
+                        <input type="text" id="checkout-name" placeholder="Your full name" required />
+                    </div>
+                    <div>
+                        <label for="checkout-email">Email Address</label>
+                        <input type="email" id="checkout-email" placeholder="you@example.com" required />
+                    </div>
+                    <div>
+                        <label for="checkout-phone">Phone Number</label>
+                        <input type="tel" id="checkout-phone" placeholder="+256..." required />
+                    </div>
+                </div>
+
+                <div class="address-block">
+                    <div class="block-header">
+                        <h3>Shipping Address</h3>
+                        <p>Deliveries inside Uganda are the fastest and most predictable.</p>
+                    </div>
+                    <div class="form-grid">
+                        <div class="full-width">
+                            <label for="shipping-line1">Address Line 1</label>
+                            <input type="text" id="shipping-line1" placeholder="Street, plot, village, or landmark" required />
+                        </div>
+                        <div class="full-width">
+                            <label for="shipping-line2">Address Line 2</label>
+                            <input type="text" id="shipping-line2" placeholder="Apartment, suite, or extra directions" />
+                        </div>
+                        <div>
+                            <label for="shipping-city">City / District</label>
+                            <input type="text" id="shipping-city" placeholder="Kampala" required />
+                        </div>
+                        <div>
+                            <label for="shipping-postcode">Postal Code</label>
+                            <input type="text" id="shipping-postcode" placeholder="Optional" />
+                        </div>
+                        <div>
+                            <label for="shipping-country">Country</label>
+                            <select id="shipping-country" required>
+                                <option value="Uganda">Uganda</option>
+                                <option value="Kenya">Kenya</option>
+                                <option value="Rwanda">Rwanda</option>
+                                <option value="Tanzania">Tanzania</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                        <div class="full-width">
+                            <label for="shipping-notes">Delivery Notes</label>
+                            <textarea id="shipping-notes" placeholder="Helpful delivery notes, preferred drop-off point, or landmark"></textarea>
+                        </div>
+                    </div>
+                    <p id="shipping-warning" class="shipping-warning" hidden>Shipping outside Uganda may require a revised shipping charge after payment review.</p>
+                </div>
+
+                <div class="billing-toggle">
+                    <label>
+                        <input type="checkbox" id="same-as-shipping" checked />
+                        Billing address is the same as shipping
+                    </label>
+                </div>
+
+                <div id="billing-fields" class="address-block" hidden>
+                    <div class="block-header">
+                        <h3>Billing Address</h3>
+                        <p>Use this if the billing address differs from your delivery address.</p>
+                    </div>
+                    <div class="form-grid">
+                        <div class="full-width">
+                            <label for="billing-line1">Billing Address Line 1</label>
+                            <input type="text" id="billing-line1" placeholder="Street, plot, village, or landmark" />
+                        </div>
+                        <div class="full-width">
+                            <label for="billing-line2">Billing Address Line 2</label>
+                            <input type="text" id="billing-line2" placeholder="Apartment, suite, or extra directions" />
+                        </div>
+                        <div>
+                            <label for="billing-city">City / District</label>
+                            <input type="text" id="billing-city" placeholder="Kampala" />
+                        </div>
+                        <div>
+                            <label for="billing-postcode">Postal Code</label>
+                            <input type="text" id="billing-postcode" placeholder="Optional" />
+                        </div>
+                        <div>
+                            <label for="billing-country">Country</label>
+                            <select id="billing-country">
+                                <option value="Uganda">Uganda</option>
+                                <option value="Kenya">Kenya</option>
+                                <option value="Rwanda">Rwanda</option>
+                                <option value="Tanzania">Tanzania</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="checkout-submit">
+                    <p id="checkout-setup-note" class="setup-note">Live online payment is currently disabled until Flutterwave production credentials are installed. Customers can still send an order inquiry through the contact page.</p>
+                    <button type="submit" class="btn" id="checkout-submit-button">Continue to Secure Payment</button>
+                    <a href="contact.html" class="btn btn-secondary">Send Order Inquiry Instead</a>
+                </div>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-about">
+            <img src="images/logo.png" alt="Explore Uganda logo" class="footer-logo" />
+            <h2>Explore Uganda</h2>
+            <p>Discover the Pearl of Africa. Your journey to Uganda’s wildlife, culture, and adventure begins here.</p>
+        </div>
+
+        <div class="footer-links">
+            <h3>Quick Links</h3>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="destinations.html">Destinations</a></li>
+                <li><a href="tours.html">Tours</a></li>
+                <li class="footer-desktop-only"><a href="blog.html">Blog</a></li>
+                <li><a href="plan-trip.html">Plan My Trip</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li class="footer-desktop-only"><a href="souvenirs.html">Souvenirs</a></li>
+                <li class="footer-desktop-only"><a href="privacy-policy.html">Privacy Policy</a></li>
+                <li class="footer-desktop-only"><a href="booking-terms.html">Booking Terms</a></li>
+                <li class="footer-desktop-only"><a href="returns-refund-policy.html">Returns & Refunds</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-shop footer-mobile-only">
+            <h3>Shop</h3>
+            <ul>
+                <li><a href="souvenirs.html">Souvenirs</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-legal footer-mobile-only">
+            <h3>Legal</h3>
+            <ul>
+                <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                <li><a href="booking-terms.html">Booking Terms</a></li>
+                <li><a href="returns-refund-policy.html">Returns & Refunds</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-contact-social">
+            <h3>Contact Us & Follow Us</h3>
+            <ul>
+                <li>Email: info@lovableuganda.com</li>
+                <li>Phone: +256 757 714 664</li>
+                <li>WhatsApp: <a href="https://wa.me/256773167457" target="_blank">+256 773 167 457</a></li>
+                <li>Address: Kampala, Uganda</li>
+            </ul>
+            <div class="footer-social">
+                <ul>
+                    <li><a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
+                    <li><a href="#" target="_blank"><i class="fab fa-instagram"></i></a></li>
+                    <li><a href="#" target="_blank"><i class="fab fa-x-twitter"></i></a></li>
+                    <li><a href="#" target="_blank"><i class="fab fa-tiktok"></i></a></li>
+                    <li><a href="#" target="_blank"><i class="fab fa-youtube"></i></a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-subscribe">
+            <h3>Subscribe to Our Newsletter</h3>
+            <p>Stay updated with the latest news and offers.</p>
+            <form action="https://formspree.io/f/xlgpqzog" method="POST">
+            <input type="email" name="email" placeholder="Enter your email" autocomplete="email" required>
+                <button type="submit">Subscribe</button>
+            </form>
+        </div>
+
+        <p>&copy; 2026 Explore Uganda. All rights reserved.</p>
+    </footer>
+
+<script>
+    const moreToggle = document.querySelector('.more-toggle');
+    const moreItems = document.querySelectorAll('.more-item');
+
+    if (moreToggle) {
+        moreToggle.addEventListener('click', () => {
+            const isExpanded = moreToggle.textContent === 'Less';
+            moreItems.forEach(item => {
+                item.style.display = isExpanded ? 'none' : 'block';
+            });
+            moreToggle.textContent = isExpanded ? 'More' : 'Less';
+        });
+    }
+</script>
+
+<script>
+    const checkoutStorageKey = 'explore-uganda-souvenir-checkout';
+    const currencyStorageKey = 'explore-uganda-souvenir-currency';
+    const pendingOrderStorageKey = 'explore-uganda-pending-order';
+    const productPrices = {
+        'Handcrafted Baskets': 165000,
+        'Beaded Jewelry': 65000,
+        'Traditional Masks': 150000,
+        'Ugandan Coffee & Tea': 55000,
+        'Local Art & Paintings': 295000
+    };
+    const currencyRates = {
+        UGX: 1,
+        USD: 1 / 3771.509776,
+        EUR: 1 / 4357.369467,
+        GBP: 1 / 5022.307717,
+        KES: 1 / 28.9844,
+        AED: 1 / 1024.942801
+    };
+    const currencySymbols = {
+        UGX: 'UGX',
+        USD: '$',
+        EUR: '€',
+        GBP: '£',
+        KES: 'KES',
+        AED: 'AED'
+    };
+
+    const checkoutItemsEl = document.getElementById('checkout-items');
+    const checkoutSubtotalEl = document.getElementById('checkout-subtotal');
+    const checkoutSubtotalUgxEl = document.getElementById('checkout-subtotal-ugx');
+    const checkoutCurrencyBadge = document.getElementById('checkout-currency-badge');
+    const checkoutForm = document.getElementById('checkout-form');
+    const checkoutSubmitButton = document.getElementById('checkout-submit-button');
+    const checkoutSetupNote = document.getElementById('checkout-setup-note');
+    const publicKeyInput = document.getElementById('flw-public-key');
+    const redirectUrlInput = checkoutForm.querySelector('input[name="redirect_url"]');
+    const amountInput = document.getElementById('checkout-amount');
+    const txRefInput = document.getElementById('checkout-tx-ref');
+    const orderItemsHidden = document.getElementById('order-items-hidden');
+    const displayCurrencyHidden = document.getElementById('display-currency-hidden');
+
+    const shippingCountry = document.getElementById('shipping-country');
+    const shippingWarning = document.getElementById('shipping-warning');
+    const sameAsShippingCheckbox = document.getElementById('same-as-shipping');
+    const billingFields = document.getElementById('billing-fields');
+
+    const checkoutName = document.getElementById('checkout-name');
+    const checkoutEmail = document.getElementById('checkout-email');
+    const checkoutPhone = document.getElementById('checkout-phone');
+    const shippingLine1 = document.getElementById('shipping-line1');
+    const shippingLine2 = document.getElementById('shipping-line2');
+    const shippingCity = document.getElementById('shipping-city');
+    const shippingPostcode = document.getElementById('shipping-postcode');
+    const shippingNotes = document.getElementById('shipping-notes');
+    const billingLine1 = document.getElementById('billing-line1');
+    const billingLine2 = document.getElementById('billing-line2');
+    const billingCity = document.getElementById('billing-city');
+    const billingPostcode = document.getElementById('billing-postcode');
+    const billingCountry = document.getElementById('billing-country');
+
+    const hiddenFields = {
+        customerName: document.getElementById('customer-name-hidden'),
+        customerEmail: document.getElementById('customer-email-hidden'),
+        customerPhone: document.getElementById('customer-phone-hidden'),
+        shippingLine1: document.getElementById('shipping-line1-hidden'),
+        shippingLine2: document.getElementById('shipping-line2-hidden'),
+        shippingCity: document.getElementById('shipping-city-hidden'),
+        shippingPostcode: document.getElementById('shipping-postcode-hidden'),
+        shippingCountry: document.getElementById('shipping-country-hidden'),
+        shippingNotes: document.getElementById('shipping-notes-hidden'),
+        billingLine1: document.getElementById('billing-line1-hidden'),
+        billingLine2: document.getElementById('billing-line2-hidden'),
+        billingCity: document.getElementById('billing-city-hidden'),
+        billingPostcode: document.getElementById('billing-postcode-hidden'),
+        billingCountry: document.getElementById('billing-country-hidden')
+    };
+
+    const getSelectedCurrency = () => localStorage.getItem(currencyStorageKey) || 'UGX';
+
+    const formatMoney = (amountInUgx, currencyCode) => {
+        const rate = currencyRates[currencyCode] || 1;
+        const convertedAmount = amountInUgx * rate;
+
+        if (currencyCode === 'UGX') {
+            return `UGX ${Math.round(convertedAmount).toLocaleString()}`;
+        }
+
+        if (currencyCode === 'USD' || currencyCode === 'EUR' || currencyCode === 'GBP') {
+            return `${currencySymbols[currencyCode]}${convertedAmount.toFixed(2)}`;
+        }
+
+        return `${currencySymbols[currencyCode]} ${convertedAmount.toFixed(2)}`;
+    };
+
+    const getCheckoutItems = () => {
+        try {
+            return JSON.parse(localStorage.getItem(checkoutStorageKey)) || [];
+        } catch (error) {
+            return [];
+        }
+    };
+
+    const renderCheckoutSummary = () => {
+        const items = getCheckoutItems();
+        const displayCurrency = getSelectedCurrency();
+        const subtotalUgx = items.reduce((sum, item) => sum + ((productPrices[item.name] || 0) * item.quantity), 0);
+
+        checkoutItemsEl.innerHTML = '';
+
+        if (items.length === 0) {
+            checkoutItemsEl.innerHTML = '<li class="checkout-empty">No selected items yet. Return to souvenirs and choose the products you want to buy.</li>';
+            checkoutSubmitButton.disabled = true;
+        } else {
+            items.forEach((item) => {
+                const itemTotal = (productPrices[item.name] || 0) * item.quantity;
+                const listItem = document.createElement('li');
+                listItem.innerHTML = `<span>${item.name} x${item.quantity}</span><strong>${formatMoney(itemTotal, displayCurrency)}</strong>`;
+                checkoutItemsEl.appendChild(listItem);
+            });
+        }
+
+        checkoutCurrencyBadge.textContent = displayCurrency;
+        checkoutSubtotalEl.textContent = formatMoney(subtotalUgx, displayCurrency);
+        checkoutSubtotalUgxEl.textContent = formatMoney(subtotalUgx, 'UGX');
+        amountInput.value = String(subtotalUgx);
+        displayCurrencyHidden.value = displayCurrency;
+        orderItemsHidden.value = items.map((item) => `${item.name} x${item.quantity}`).join(', ');
+        txRefInput.value = `explore-uganda-${Date.now()}`;
+    };
+
+    const syncShippingWarning = () => {
+        const outsideUganda = shippingCountry.value !== 'Uganda';
+        shippingWarning.hidden = !outsideUganda;
+    };
+
+    const syncBillingVisibility = () => {
+        const sameAsShipping = sameAsShippingCheckbox.checked;
+        billingFields.hidden = sameAsShipping;
+
+        [billingLine1, billingLine2, billingCity, billingPostcode, billingCountry].forEach((field) => {
+            field.required = !sameAsShipping && (field === billingLine1 || field === billingCity || field === billingCountry);
+        });
+    };
+
+    const syncHiddenFields = () => {
+        hiddenFields.customerName.value = checkoutName.value.trim();
+        hiddenFields.customerEmail.value = checkoutEmail.value.trim();
+        hiddenFields.customerPhone.value = checkoutPhone.value.trim();
+
+        hiddenFields.shippingLine1.value = shippingLine1.value.trim();
+        hiddenFields.shippingLine2.value = shippingLine2.value.trim();
+        hiddenFields.shippingCity.value = shippingCity.value.trim();
+        hiddenFields.shippingPostcode.value = shippingPostcode.value.trim();
+        hiddenFields.shippingCountry.value = shippingCountry.value;
+        hiddenFields.shippingNotes.value = shippingNotes.value.trim();
+
+        if (sameAsShippingCheckbox.checked) {
+            hiddenFields.billingLine1.value = shippingLine1.value.trim();
+            hiddenFields.billingLine2.value = shippingLine2.value.trim();
+            hiddenFields.billingCity.value = shippingCity.value.trim();
+            hiddenFields.billingPostcode.value = shippingPostcode.value.trim();
+            hiddenFields.billingCountry.value = shippingCountry.value;
+            return;
+        }
+
+        hiddenFields.billingLine1.value = billingLine1.value.trim();
+        hiddenFields.billingLine2.value = billingLine2.value.trim();
+        hiddenFields.billingCity.value = billingCity.value.trim();
+        hiddenFields.billingPostcode.value = billingPostcode.value.trim();
+        hiddenFields.billingCountry.value = billingCountry.value;
+    };
+
+    const setupLooksConfigured = () => {
+        const publicKeyReady = publicKeyInput.value && !publicKeyInput.value.includes('YOUR_PUBLIC_KEY');
+        const redirectReady = Boolean(redirectUrlInput.value);
+        return publicKeyReady && redirectReady;
+    };
+
+    const updateSetupState = () => {
+        if (setupLooksConfigured()) {
+            checkoutSetupNote.textContent = 'Your Flutterwave public key and redirect URL are set. Customers can continue to the hosted payment page.';
+            checkoutSubmitButton.disabled = getCheckoutItems().length === 0;
+        } else {
+            checkoutSetupNote.textContent = 'Live online payment is currently disabled until Flutterwave production credentials are installed. Customers can still send an order inquiry through the contact page.';
+            checkoutSubmitButton.disabled = true;
+        }
+    };
+
+    if (shippingCountry) {
+        shippingCountry.addEventListener('change', syncShippingWarning);
+    }
+
+    if (sameAsShippingCheckbox) {
+        sameAsShippingCheckbox.addEventListener('change', () => {
+            syncBillingVisibility();
+            syncHiddenFields();
+        });
+    }
+
+    [checkoutName, checkoutEmail, checkoutPhone, shippingLine1, shippingLine2, shippingCity, shippingPostcode, shippingCountry, shippingNotes, billingLine1, billingLine2, billingCity, billingPostcode, billingCountry].forEach((field) => {
+        field.addEventListener('input', syncHiddenFields);
+        field.addEventListener('change', syncHiddenFields);
+    });
+
+    if (checkoutForm) {
+        checkoutForm.addEventListener('submit', (event) => {
+            renderCheckoutSummary();
+            syncHiddenFields();
+
+            if (!setupLooksConfigured()) {
+                event.preventDefault();
+                alert('Live payment is disabled until real Flutterwave credentials are installed for this checkout.');
+                return;
+            }
+
+            const orderSnapshot = {
+                items: getCheckoutItems(),
+                displayCurrency: getSelectedCurrency(),
+                subtotalUgx: Number(amountInput.value || 0),
+                customerName: checkoutName.value.trim()
+            };
+
+            localStorage.setItem(pendingOrderStorageKey, JSON.stringify(orderSnapshot));
+        });
+    }
+
+    renderCheckoutSummary();
+    syncShippingWarning();
+    syncBillingVisibility();
+    syncHiddenFields();
+    updateSetupState();
+</script>
+
+</body>
+</html>

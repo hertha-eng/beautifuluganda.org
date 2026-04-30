@@ -1,0 +1,5 @@
+@import url("./blog-article.css");
+
+:root {
+    --blog-hero-image: url("../images/murchison-falls.webp");
+}

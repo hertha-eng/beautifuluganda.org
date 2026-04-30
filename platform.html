@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="theme-color" content="#004d40">
+    <title>Content Platform | Explore Uganda</title>
+    <link rel="icon" href="images/logo.png" type="image/png">
+    <link rel="apple-touch-icon" href="images/logo.png">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/platform.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="images/logo.png" alt="Explore Uganda logo" class="site-logo">
+            <p class="site-title">Explore Uganda</p>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Public Site</a></li>
+                <li><a href="admin.html">Static Admin</a></li>
+                <li class="active"><a href="platform.html">Platform</a></li>
+            </ul>
+        </nav>
+        <a href="blog.html" class="cta">View Blog</a>
+    </header>
+
+    <main class="platform-shell">
+        <section class="platform-hero">
+            <div>
+                <p class="platform-kicker">Supabase Platform</p>
+                <h1>Tourist stories, staff review, and accountable publishing</h1>
+                <p>Manage writer accounts, review blog submissions, publish approved stories, maintain souvenirs, and see which admin or staff member performed each action.</p>
+            </div>
+            <div class="platform-session-card" id="platform-session-card">
+                <p class="session-label">Session</p>
+                <p id="session-summary">Checking login status...</p>
+                <button type="button" class="btn secondary-btn" id="sign-out-button" hidden>Sign Out</button>
+            </div>
+        </section>
+
+        <section class="platform-card" id="auth-panel">
+            <div class="panel-heading">
+                <div>
+                    <p class="platform-kicker">Login</p>
+                    <h2>Sign in to your dashboard</h2>
+                </div>
+                <p class="panel-note">Tourist writers, staff, and admins can sign in here. Google sign-in works for accounts that use the same email address in Supabase Auth. Only bigbeautifuluganda@gmail.com can create or control admin/staff profiles.</p>
+            </div>
+            <form class="platform-form compact-form" id="login-form">
+                <label>
+                    Email
+                    <input type="email" name="email" autocomplete="email" required>
+                </label>
+                <label>
+                    Password
+                    <input type="password" name="password" autocomplete="current-password" required>
+                </label>
+                <button type="submit" class="btn">Sign In</button>
+            </form>
+            <div class="oauth-divider" aria-hidden="true">
+                <span>or</span>
+            </div>
+            <button type="button" class="btn secondary-btn oauth-button" id="google-sign-in-button">Continue with Google</button>
+        </section>
+
+        <section class="platform-card dashboard-card" id="dashboard-panel" hidden>
+            <div class="panel-heading">
+                <div>
+                    <p class="platform-kicker">Dashboard</p>
+                    <h2 id="dashboard-title">Content Dashboard</h2>
+                </div>
+                <p class="panel-note" id="dashboard-note">Loading permissions...</p>
+            </div>
+
+            <nav class="platform-tabs" aria-label="Dashboard sections">
+                <button type="button" class="tab-button is-active" data-tab="writer-panel">My Blog Posts</button>
+                <button type="button" class="tab-button staff-only" data-tab="review-panel">Review Queue</button>
+                <button type="button" class="tab-button staff-only" data-tab="accounts-panel">Accounts</button>
+                <button type="button" class="tab-button staff-only" data-tab="souvenirs-panel">Souvenirs</button>
+                <button type="button" class="tab-button staff-only" data-tab="audit-panel">Audit History</button>
+            </nav>
+
+            <div class="platform-status" id="platform-status" role="status" aria-live="polite"></div>
+
+            <section class="tab-panel is-active" id="writer-panel">
+                <div class="split-layout">
+                    <div class="writer-tools">
+                    <form class="platform-form tourist-details-form" id="tourist-details-form">
+                        <h3>My Tourist Details</h3>
+                        <p class="panel-note">Save these once so your blog posts can use the same author details.</p>
+                        <label>
+                            Display Name
+                            <input type="text" name="display_name" placeholder="Your public name">
+                        </label>
+                        <label>
+                            Country
+                            <input type="text" name="country" placeholder="Germany, Uganda, USA">
+                        </label>
+                        <label>
+                            Short Bio
+                            <textarea name="short_bio" rows="4" placeholder="A short travel bio"></textarea>
+                        </label>
+                        <label>
+                            Profile Image Path or URL
+                            <input type="text" name="profile_image_path" placeholder="images/tourist.webp">
+                        </label>
+                        <div class="two-column">
+                            <label>
+                                Instagram URL
+                                <input type="url" name="instagram_url" placeholder="https://instagram.com/...">
+                            </label>
+                            <label>
+                                Website URL
+                                <input type="url" name="website_url" placeholder="https://...">
+                            </label>
+                        </div>
+                        <button type="submit" class="btn">Save Tourist Details</button>
+                    </form>
+
+                    <form class="platform-form" id="blog-form">
+                        <input type="hidden" name="id">
+                        <h3>Write or Edit a Blog Post</h3>
+                        <label>
+                            Title
+                            <input type="text" name="title" required>
+                        </label>
+                        <label>
+                            Slug
+                            <input type="text" name="slug" placeholder="my-uganda-story">
+                        </label>
+                        <label>
+                            Excerpt
+                            <textarea name="excerpt" rows="3"></textarea>
+                        </label>
+                        <label>
+                            Cover Image Path or URL
+                            <input type="text" name="cover_image_path" placeholder="images/gorilla.webp">
+                        </label>
+                        <label>
+                            Article Content
+                            <div class="editor-toolbar" aria-label="Article formatting tools">
+                                <button type="button" class="small-button" data-insert-block="h2">H2</button>
+                                <button type="button" class="small-button" data-insert-block="h3">H3</button>
+                                <button type="button" class="small-button" data-insert-block="paragraph">P</button>
+                                <button type="button" class="small-button" data-insert-block="image">Image</button>
+                            </div>
+                            <textarea name="content" rows="12" required></textarea>
+                        </label>
+                        <div class="button-row">
+                            <button type="submit" class="btn" id="save-blog-button" data-save-mode="draft">Save Draft</button>
+                            <button type="button" class="btn secondary-btn" id="submit-blog-button">Submit for Review</button>
+                            <button type="button" class="btn ghost-btn" id="clear-blog-form">Clear</button>
+                        </div>
+                    </form>
+                    </div>
+                    <div>
+                        <div class="list-heading">
+                            <h3>My Posts</h3>
+                            <button type="button" class="small-button" id="refresh-my-posts">Refresh</button>
+                        </div>
+                        <div class="data-list" id="my-posts-list"></div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="tab-panel" id="review-panel">
+                <div class="list-heading">
+                    <h3>Submitted and Approved Blog Posts</h3>
+                    <button type="button" class="small-button" id="refresh-review-posts">Refresh</button>
+                </div>
+                <div class="data-list" id="review-posts-list"></div>
+            </section>
+
+            <section class="tab-panel" id="accounts-panel">
+                <div class="split-layout">
+                    <form class="platform-form" id="profile-form">
+                        <h3>Create or Update an Account</h3>
+                        <p class="panel-note">Enter the user's details here. The dashboard creates the login and profile together when account automation is deployed.</p>
+                        <input type="hidden" name="id">
+                        <label>
+                            Email
+                            <input type="email" name="email" autocomplete="email" required>
+                        </label>
+                        <label>
+                            Temporary Password
+                            <input type="password" name="password" autocomplete="new-password" minlength="8" placeholder="Required for a new login">
+                        </label>
+                        <label>
+                            Full Name
+                            <input type="text" name="full_name" required>
+                        </label>
+                        <label>
+                            Role
+                            <select name="role" required>
+                                <option value="tourist">Tourist Writer</option>
+                                <option value="staff">Staff</option>
+                                <option value="admin">Admin</option>
+                            </select>
+                        </label>
+                        <label>
+                            Account Expiry
+                            <input type="datetime-local" name="account_expires_at">
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="is_active" checked>
+                            Active account
+                        </label>
+                        <div class="button-row">
+                            <button type="submit" class="btn">Save Account</button>
+                            <button type="button" class="btn secondary-btn" id="default-expiry-button">Set 30 Days</button>
+                            <button type="button" class="btn ghost-btn" id="clear-profile-form">Clear</button>
+                        </div>
+                    </form>
+                    <div>
+                        <div class="list-heading">
+                            <h3>Profiles</h3>
+                            <button type="button" class="small-button" id="refresh-profiles">Refresh</button>
+                        </div>
+                        <div class="data-list" id="profiles-list"></div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="tab-panel" id="souvenirs-panel">
+                <div class="split-layout">
+                    <form class="platform-form" id="souvenir-form">
+                        <input type="hidden" name="id">
+                        <h3>Add or Edit Souvenir</h3>
+                        <label>
+                            Name
+                            <input type="text" name="name" required>
+                        </label>
+                        <label>
+                            Slug
+                            <input type="text" name="slug">
+                        </label>
+                        <label>
+                            Description
+                            <textarea name="description" rows="5"></textarea>
+                        </label>
+                        <div class="two-column">
+                            <label>
+                                Price
+                                <input type="number" name="price" min="0" step="0.01" value="0">
+                            </label>
+                            <label>
+                                Currency
+                                <input type="text" name="currency" value="UGX">
+                            </label>
+                        </div>
+                        <label>
+                            Image Path or URL
+                            <input type="text" name="image_path">
+                        </label>
+                        <div class="two-column">
+                            <label>
+                                Stock Status
+                                <input type="text" name="stock_status" value="in_stock">
+                            </label>
+                            <label>
+                                Status
+                                <select name="status">
+                                    <option value="draft">Draft</option>
+                                    <option value="published">Published</option>
+                                    <option value="archived">Archived</option>
+                                </select>
+                            </label>
+                        </div>
+                        <div class="button-row">
+                            <button type="submit" class="btn">Save Souvenir</button>
+                            <button type="button" class="btn ghost-btn" id="clear-souvenir-form">Clear</button>
+                        </div>
+                    </form>
+                    <div>
+                        <div class="list-heading">
+                            <h3>Souvenirs</h3>
+                            <button type="button" class="small-button" id="refresh-souvenirs">Refresh</button>
+                        </div>
+                        <div class="data-list" id="souvenirs-list"></div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="tab-panel" id="audit-panel">
+                <div class="list-heading">
+                    <h3>Audit History</h3>
+                    <button type="button" class="small-button" id="refresh-audit">Refresh</button>
+                </div>
+                <div class="data-list audit-list" id="audit-list"></div>
+            </section>
+        </section>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/supabase-client.js"></script>
+    <script src="js/platform-dashboard.js"></script>
+</body>
+</html>

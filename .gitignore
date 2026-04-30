@@ -1,0 +1,11 @@
+.DS_Store
+Thumbs.db
+
+.codex
+.wrangler
+.env
+.env.*
+
+node_modules/
+
+*.log

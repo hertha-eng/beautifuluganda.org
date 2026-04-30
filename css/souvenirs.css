@@ -1,0 +1,542 @@
+/* ==========================
+   HERO SECTION
+========================== */
+#hero-souvenirs {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 6em 2em;
+    background-image: url('../images/jewelry.webp');
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+    border-radius: 12px;
+    position: relative;
+}
+
+#hero-souvenirs::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.35);
+    border-radius: 12px;
+}
+
+#hero-souvenirs h1,
+#hero-souvenirs h2,
+#hero-souvenirs p {
+    position: relative;
+    z-index: 1;
+}
+
+#hero-souvenirs h1,
+#hero-souvenirs h2 {
+    color: #ffffff;
+    text-shadow: 0 3px 10px rgba(0, 0, 0, 0.65);
+}
+
+.cart-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+}
+
+.shop-header-link {
+    text-decoration: none;
+}
+
+.cart-shell {
+    position: fixed;
+    right: 1.5rem;
+    bottom: 1.5rem;
+    z-index: 1400;
+}
+
+.cart-shell .cart-toggle {
+    border-radius: 999px;
+    box-shadow: 0 18px 36px rgba(0, 0, 0, 0.18);
+}
+
+#cart-count {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 1.7rem;
+    height: 1.7rem;
+    padding: 0 0.45rem;
+    border-radius: 999px;
+    background: rgba(0, 77, 64, 0.16);
+    color: #004d40;
+    font-size: 0.9rem;
+    font-weight: 700;
+}
+
+.cart-toggle {
+    border: none;
+    cursor: pointer;
+}
+
+.cart-dropdown {
+    position: absolute;
+    bottom: calc(100% + 0.75rem);
+    right: 0;
+    width: min(440px, calc(100vw - 2rem));
+    padding: 1rem;
+    border-radius: 16px;
+    background: #ffffff;
+    border: 1px solid rgba(0, 77, 64, 0.12);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.16);
+    z-index: 1200;
+}
+
+.cart-dropdown-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 0.8rem;
+}
+
+.cart-dropdown-header h2 {
+    margin-bottom: 0;
+    font-size: 1.2rem;
+    color: #004d40;
+}
+
+.close-cart {
+    width: auto;
+    margin: 0;
+    padding: 0;
+    border: none;
+    background: transparent;
+    color: #004d40;
+    font-size: 1.6rem;
+    line-height: 1;
+    cursor: pointer;
+}
+
+/* ==========================
+   SOUVENIRS GRID
+========================== */
+#souvenirs-list {
+
+    margin-top: 2em;
+}
+
+.souvenir-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin: 1.25rem 0 1.75rem;
+    padding: 1rem 1.25rem;
+    border-radius: 14px;
+    background: #f7fbf9;
+    border: 1px solid rgba(0, 77, 64, 0.1);
+}
+
+.market-note {
+    margin-bottom: 0;
+    color: #466055;
+}
+
+.currency-picker {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-weight: 700;
+    color: #004d40;
+}
+
+.currency-tools {
+    display: grid;
+    justify-items: end;
+    gap: 0.45rem;
+}
+
+.currency-picker select {
+    min-width: 110px;
+    padding: 0.7rem 0.9rem;
+    border: 1px solid rgba(0, 77, 64, 0.18);
+    border-radius: 999px;
+    background: #fff;
+    color: #004d40;
+    font-weight: 700;
+}
+
+.currency-note {
+    margin-bottom: 0;
+    font-size: 0.88rem;
+    color: #5e6e68;
+}
+
+#souvenirs-list .souvenirs-grid {
+    align-items: stretch;
+}
+
+#souvenirs-list .souvenir {
+    background-color: #fff4e6;
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+}
+
+#souvenirs-list .souvenir:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+}
+
+#souvenirs-list .souvenir img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+}
+
+#souvenirs-list .souvenir > :not(img) {
+    padding: 1.5em;
+}
+
+#souvenirs-list .souvenir h3 {
+    margin-bottom: 0.5em;
+}
+
+#souvenirs-list .souvenir p {
+    margin-bottom: 1em;
+}
+
+#souvenirs-list .souvenir .souvenir-price {
+    margin-top: auto;
+    margin-bottom: 1rem;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #004d40;
+}
+
+#souvenirs-list .souvenir .btn {
+    background-color: #007b5e;
+    color: #fff;
+    margin-top: auto;
+}
+
+#souvenirs-list .souvenir .btn:hover {
+    background-color: #004d40;
+}
+
+.shop-intro {
+    margin: 2rem 0 0;
+    padding: 1.35rem 1.5rem;
+    border-radius: 16px;
+    background: linear-gradient(135deg, #fff7e6, #eef8f4);
+    border: 1px solid rgba(0, 77, 64, 0.12);
+}
+
+.shop-intro p:last-child {
+    margin-bottom: 0;
+}
+
+.shop-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 1rem;
+}
+
+.shop-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.45rem 0.9rem;
+    border-radius: 999px;
+    background: rgba(0, 77, 64, 0.08);
+    color: #004d40;
+    font-weight: 700;
+    font-size: 0.92rem;
+}
+
+/* ==========================
+   CART
+========================== */
+.cart-items {
+    display: grid;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    max-height: 340px;
+    overflow-y: auto;
+}
+
+.cart-item {
+    display: grid;
+    gap: 0.9rem;
+    padding: 1rem 1.1rem;
+    border-radius: 12px;
+    background: #fcfefd;
+    border: 1px solid #e1ebe6;
+}
+
+.cart-item p,
+.cart-empty {
+    margin-bottom: 0;
+    color: #5e6e68;
+}
+
+.cart-item-main,
+.cart-item-actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.cart-item-check {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin: 0;
+    font-weight: 700;
+    color: #20483d;
+    cursor: pointer;
+}
+
+.cart-item-check input[type="checkbox"] {
+    width: 1rem;
+    height: 1rem;
+    margin: 0;
+    accent-color: #007b5e;
+}
+
+.cart-quantity-controls {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.35rem 0.5rem;
+    border-radius: 999px;
+    background: #eef7f3;
+}
+
+.qty-btn {
+    width: 2rem;
+    height: 2rem;
+    margin: 0;
+    padding: 0;
+    border: none;
+    border-radius: 999px;
+    background: #007b5e;
+    color: #fff;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.qty-value {
+    min-width: 1.2rem;
+    text-align: center;
+    font-weight: 700;
+    color: #004d40;
+}
+
+.remove-cart-item,
+.secondary-btn {
+    width: auto;
+    margin: 0;
+    padding: 0.7rem 1rem;
+    border: 1px solid rgba(0, 77, 64, 0.18);
+    border-radius: 999px;
+    background: #fff;
+    color: #004d40;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.remove-cart-item:hover,
+.secondary-btn:hover {
+    background: #004d40;
+    color: #fff;
+}
+
+.cart-actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.cart-summary-block {
+    display: grid;
+    gap: 0.2rem;
+}
+
+.cart-action-buttons {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.cart-summary {
+    margin-bottom: 0;
+    color: #004d40;
+    font-weight: 700;
+}
+
+.selected-summary {
+    font-size: 0.95rem;
+    color: #466055;
+}
+
+.cart-action-buttons .btn:disabled,
+.cart-action-buttons .secondary-btn:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* ==========================
+   CALL TO ACTION
+========================== */
+#cta-souvenirs {
+    background-color: #007b5e;
+    color: #fff;
+    text-align: center;
+    padding: 4em 2em;
+    border-radius: 12px;
+    margin-top: 3em;
+}
+
+#cta-souvenirs .btn {
+    --btn-text-color: #004d40;
+    background-color: #ffc107;
+    color: var(--btn-text-color);
+}
+
+#cta-souvenirs .btn:hover {
+    background-color: #e0a800;
+    color: var(--btn-text-color);
+}
+
+/* ==========================
+   RESPONSIVE
+========================== */
+@media (max-width: 1200px) {
+    #hero-souvenirs {
+        padding: 5em 2em;
+    }
+}
+
+@media (max-width: 992px) {
+    #hero-souvenirs {
+        padding: 5em 1.5em;
+    }
+    .destinations-grid,
+    .tours-grid,
+    .souvenirs-grid,
+    .blog-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    #hero-souvenirs {
+        padding: 4em 1em;
+    }
+
+    .header-actions {
+        width: 100%;
+    }
+
+    .shop-header-link {
+        width: 100%;
+        text-align: center;
+    }
+
+    .souvenir-toolbar,
+    .currency-picker {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .currency-tools {
+        justify-items: start;
+    }
+    #souvenirs-list {
+        gap: 1.5em;
+    }
+    .destinations-grid,
+    .tours-grid,
+    .souvenirs-grid,
+    .blog-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5em;
+    }
+    #cta-souvenirs {
+        padding: 3em 1.5em;
+    }
+
+    .cart-dropdown {
+        right: 0;
+        bottom: calc(100% + 0.65rem);
+        width: min(420px, calc(100vw - 1.5rem));
+    }
+
+    .cart-item,
+    .cart-item-main,
+    .cart-item-actions,
+    .cart-actions,
+    .cart-action-buttons {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+@media (max-width: 480px) {
+    #hero-souvenirs h1,
+    #hero-souvenirs h2 {
+        font-size: 1.4rem;
+    }
+    #hero-souvenirs p {
+        font-size: 0.95rem;
+    }
+    #souvenirs-list .souvenir img {
+        height: 180px;
+    }
+    #souvenirs-list .souvenir > :not(img) {
+        padding: 1em;
+    }
+    #souvenirs-list .souvenir h3 {
+        font-size: 1.1rem;
+    }
+    #cta-souvenirs {
+        padding: 2.5em 1em;
+    }
+    #cta-souvenirs h2 {
+        font-size: 1.2rem;
+    }
+
+    .cart-shell {
+        right: 0.75rem;
+        bottom: 0.75rem;
+    }
+
+    .cart-dropdown {
+        width: calc(100vw - 1rem);
+        right: 0;
+    }
+
+    .shop-badges {
+        gap: 0.5rem;
+    }
+
+    .currency-picker select {
+        width: 100%;
+    }
+}
