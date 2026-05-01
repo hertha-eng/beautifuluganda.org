@@ -197,6 +197,7 @@
 
                 <div class="checkout-submit">
                     <p id="checkout-setup-note" class="setup-note">Live online payment is currently disabled until Flutterwave production credentials are installed. Customers can still send an order inquiry through the contact page.</p>
+                    <p id="checkout-order-status" class="setup-note" role="status" aria-live="polite"></p>
                     <button type="submit" class="btn" id="checkout-submit-button">Continue to Secure Payment</button>
                     <a href="contact.html" class="btn btn-secondary">Send Order Inquiry Instead</a>
                 </div>
@@ -289,16 +290,29 @@
     }
 </script>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/supabase-client.js"></script>
 <script>
     const checkoutStorageKey = 'explore-uganda-souvenir-checkout';
     const currencyStorageKey = 'explore-uganda-souvenir-currency';
     const pendingOrderStorageKey = 'explore-uganda-pending-order';
+    const supabase = window.ExploreUgandaSupabase;
     const productPrices = {
         'Handcrafted Baskets': 165000,
         'Beaded Jewelry': 65000,
         'Traditional Masks': 150000,
         'Ugandan Coffee & Tea': 55000,
-        'Local Art & Paintings': 295000
+        'Local Art & Paintings': 295000,
+        'Explore Uganda T-Shirt': 85000,
+        'Woven Table Mats': 98000,
+        'Statement Earrings': 87000,
+        'Wood Carving Gift Set': 210000,
+        'Market Spice Gift Box': 74000,
+        'Bark Cloth Wall Hanging': 120000,
+        'Festival Fabric Tote': 68000,
+        'Mabira Forest Honey Set': 90000,
+        'Kampala City Print': 135000,
+        'Ssese Island Escape Candle': 112000
     };
     const currencyRates = {
         UGX: 1,
@@ -324,6 +338,7 @@
     const checkoutForm = document.getElementById('checkout-form');
     const checkoutSubmitButton = document.getElementById('checkout-submit-button');
     const checkoutSetupNote = document.getElementById('checkout-setup-note');
+    const checkoutOrderStatus = document.getElementById('checkout-order-status');
     const publicKeyInput = document.getElementById('flw-public-key');
     const redirectUrlInput = checkoutForm.querySelector('input[name="redirect_url"]');
     const amountInput = document.getElementById('checkout-amount');
@@ -471,11 +486,82 @@
     const updateSetupState = () => {
         if (setupLooksConfigured()) {
             checkoutSetupNote.textContent = 'Your Flutterwave public key and redirect URL are set. Customers can continue to the hosted payment page.';
+            checkoutSubmitButton.textContent = 'Continue to Secure Payment';
             checkoutSubmitButton.disabled = getCheckoutItems().length === 0;
         } else {
-            checkoutSetupNote.textContent = 'Live online payment is currently disabled until Flutterwave production credentials are installed. Customers can still send an order inquiry through the contact page.';
-            checkoutSubmitButton.disabled = true;
+            checkoutSetupNote.textContent = 'Live online payment is currently disabled. This form will save the order inquiry for staff follow-up.';
+            checkoutSubmitButton.textContent = 'Submit Order Inquiry';
+            checkoutSubmitButton.disabled = getCheckoutItems().length === 0;
         }
+    };
+
+    const getAddressPayload = (type) => {
+        if (type === 'shipping') {
+            return {
+                line1: shippingLine1.value.trim(),
+                line2: shippingLine2.value.trim(),
+                city: shippingCity.value.trim(),
+                postcode: shippingPostcode.value.trim(),
+                country: shippingCountry.value,
+                notes: shippingNotes.value.trim()
+            };
+        }
+
+        if (sameAsShippingCheckbox.checked) {
+            return getAddressPayload('shipping');
+        }
+
+        return {
+            line1: billingLine1.value.trim(),
+            line2: billingLine2.value.trim(),
+            city: billingCity.value.trim(),
+            postcode: billingPostcode.value.trim(),
+            country: billingCountry.value
+        };
+    };
+
+    const buildOrderPayload = () => {
+        const items = getCheckoutItems();
+        const subtotalUgx = items.reduce((sum, item) => sum + ((productPrices[item.name] || 0) * item.quantity), 0);
+
+        return {
+            customer_name: checkoutName.value.trim(),
+            customer_email: checkoutEmail.value.trim(),
+            customer_phone: checkoutPhone.value.trim(),
+            shipping_address: getAddressPayload('shipping'),
+            billing_address: getAddressPayload('billing'),
+            display_currency: getSelectedCurrency(),
+            currency: 'UGX',
+            subtotal: subtotalUgx,
+            shipping_total: 0,
+            total: subtotalUgx,
+            flutterwave_tx_ref: txRefInput.value,
+            payment_status: 'pending',
+            order_status: 'pending',
+            notes: setupLooksConfigured() ? 'Created before Flutterwave hosted payment.' : 'Order inquiry submitted before live payment was configured.',
+            items: items.map((item) => ({
+                item_name: item.name,
+                quantity: item.quantity,
+                unit_price: productPrices[item.name] || 0,
+                currency: 'UGX'
+            }))
+        };
+    };
+
+    const saveOrderToSupabase = async () => {
+        if (!supabase) {
+            throw new Error('Supabase is not available on this page.');
+        }
+
+        const { data, error } = await supabase.rpc('create_souvenir_order', {
+            order_payload: buildOrderPayload()
+        });
+
+        if (error) {
+            throw error;
+        }
+
+        return data;
     };
 
     if (shippingCountry) {
@@ -495,24 +581,44 @@
     });
 
     if (checkoutForm) {
-        checkoutForm.addEventListener('submit', (event) => {
+        checkoutForm.addEventListener('submit', async (event) => {
+            event.preventDefault();
             renderCheckoutSummary();
             syncHiddenFields();
 
-            if (!setupLooksConfigured()) {
-                event.preventDefault();
-                alert('Live payment is disabled until real Flutterwave credentials are installed for this checkout.');
+            if (getCheckoutItems().length === 0) {
+                alert('Please choose at least one product before submitting an order.');
                 return;
             }
 
-            const orderSnapshot = {
-                items: getCheckoutItems(),
-                displayCurrency: getSelectedCurrency(),
-                subtotalUgx: Number(amountInput.value || 0),
-                customerName: checkoutName.value.trim()
-            };
+            checkoutSubmitButton.disabled = true;
+            checkoutOrderStatus.textContent = 'Saving your order details...';
 
-            localStorage.setItem(pendingOrderStorageKey, JSON.stringify(orderSnapshot));
+            try {
+                const savedOrder = await saveOrderToSupabase();
+                const orderSnapshot = {
+                    orderId: savedOrder && savedOrder.id,
+                    orderNumber: savedOrder && savedOrder.order_number,
+                    items: getCheckoutItems(),
+                    displayCurrency: getSelectedCurrency(),
+                    subtotalUgx: Number(amountInput.value || 0),
+                    customerName: checkoutName.value.trim()
+                };
+
+                localStorage.setItem(pendingOrderStorageKey, JSON.stringify(orderSnapshot));
+
+                if (setupLooksConfigured()) {
+                    checkoutOrderStatus.textContent = 'Order saved. Opening secure payment...';
+                    checkoutForm.submit();
+                    return;
+                }
+
+                checkoutOrderStatus.textContent = `Order inquiry saved${savedOrder && savedOrder.order_number ? ` as ${savedOrder.order_number}` : ''}.`;
+                window.location.href = `souvenir-payment-success.html?status=inquiry&tx_ref=${encodeURIComponent(txRefInput.value)}`;
+            } catch (error) {
+                checkoutOrderStatus.textContent = error.message || 'The order could not be saved.';
+                checkoutSubmitButton.disabled = false;
+            }
         });
     }
 

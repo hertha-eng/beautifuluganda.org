@@ -169,6 +169,9 @@
     if (status === 'successful') {
         paymentStatusTitle.textContent = 'Payment Successful';
         paymentStatusMessage.textContent = 'Thank you. Your payment was completed successfully and your order details have been submitted for fulfillment.';
+    } else if (status === 'inquiry') {
+        paymentStatusTitle.textContent = 'Order Inquiry Saved';
+        paymentStatusMessage.textContent = 'Thank you. Your order inquiry was saved and staff can now follow up with availability, delivery, and payment details.';
     } else if (status === 'cancelled') {
         paymentStatusTitle.textContent = 'Payment Cancelled';
         paymentStatusMessage.textContent = 'Your payment was cancelled before completion. You can return to the shop and try again when you are ready.';
@@ -181,6 +184,10 @@
         const pendingOrder = JSON.parse(localStorage.getItem(pendingOrderStorageKey)) || null;
 
         if (pendingOrder && Array.isArray(pendingOrder.items) && pendingOrder.items.length > 0) {
+            if (pendingOrder.orderNumber && !txRef) {
+                paymentTxRef.textContent = pendingOrder.orderNumber;
+            }
+
             paymentOrderItems.innerHTML = '';
             pendingOrder.items.forEach((item) => {
                 const listItem = document.createElement('li');

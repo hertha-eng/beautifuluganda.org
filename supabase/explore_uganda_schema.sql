@@ -936,6 +936,119 @@ from public.souvenir_orders orders
 left join public.profiles created_by on created_by.id = orders.created_by
 left join public.profiles updated_by on updated_by.id = orders.updated_by;
 
+create or replace function public.create_souvenir_order(order_payload jsonb)
+returns jsonb
+language plpgsql
+security definer
+set search_path = public
+as $$
+declare
+    order_record public.souvenir_orders%rowtype;
+    item jsonb;
+    item_name text;
+    item_quantity integer;
+    item_unit_price numeric(12, 2);
+    item_currency text;
+    shipping_payload jsonb;
+    billing_payload jsonb;
+    items_payload jsonb;
+begin
+    if order_payload is null then
+        raise exception 'Order details are required.';
+    end if;
+
+    items_payload = coalesce(order_payload -> 'items', '[]'::jsonb);
+    if jsonb_typeof(items_payload) <> 'array' or jsonb_array_length(items_payload) = 0 then
+        raise exception 'At least one order item is required.';
+    end if;
+
+    if nullif(trim(order_payload ->> 'customer_name'), '') is null then
+        raise exception 'Customer name is required.';
+    end if;
+
+    if nullif(trim(order_payload ->> 'customer_email'), '') is null then
+        raise exception 'Customer email is required.';
+    end if;
+
+    shipping_payload = coalesce(order_payload -> 'shipping_address', '{}'::jsonb);
+    billing_payload = coalesce(order_payload -> 'billing_address', shipping_payload, '{}'::jsonb);
+
+    insert into public.souvenir_orders (
+        customer_name,
+        customer_email,
+        customer_phone,
+        shipping_address,
+        billing_address,
+        display_currency,
+        currency,
+        subtotal,
+        shipping_total,
+        total,
+        flutterwave_tx_ref,
+        payment_status,
+        order_status,
+        notes
+    )
+    values (
+        trim(order_payload ->> 'customer_name'),
+        trim(order_payload ->> 'customer_email'),
+        nullif(trim(coalesce(order_payload ->> 'customer_phone', '')), ''),
+        shipping_payload,
+        billing_payload,
+        coalesce(nullif(trim(order_payload ->> 'display_currency'), ''), 'UGX'),
+        coalesce(nullif(trim(order_payload ->> 'currency'), ''), 'UGX'),
+        coalesce((order_payload ->> 'subtotal')::numeric, 0),
+        coalesce((order_payload ->> 'shipping_total')::numeric, 0),
+        coalesce((order_payload ->> 'total')::numeric, coalesce((order_payload ->> 'subtotal')::numeric, 0)),
+        nullif(trim(coalesce(order_payload ->> 'flutterwave_tx_ref', '')), ''),
+        'pending',
+        'pending',
+        nullif(trim(coalesce(order_payload ->> 'notes', '')), '')
+    )
+    returning * into order_record;
+
+    for item in select * from jsonb_array_elements(items_payload)
+    loop
+        item_name = nullif(trim(item ->> 'item_name'), '');
+        item_quantity = greatest(coalesce((item ->> 'quantity')::integer, 1), 1);
+        item_unit_price = coalesce((item ->> 'unit_price')::numeric, 0);
+        item_currency = coalesce(nullif(trim(item ->> 'currency'), ''), order_record.currency);
+
+        if item_name is null then
+            raise exception 'Every order item needs a name.';
+        end if;
+
+        insert into public.souvenir_order_items (
+            order_id,
+            souvenir_id,
+            item_name,
+            quantity,
+            unit_price,
+            currency
+        )
+        values (
+            order_record.id,
+            nullif(item ->> 'souvenir_id', '')::uuid,
+            item_name,
+            item_quantity,
+            item_unit_price,
+            item_currency
+        );
+    end loop;
+
+    return jsonb_build_object(
+        'id', order_record.id,
+        'order_number', order_record.order_number,
+        'total', order_record.total,
+        'currency', order_record.currency,
+        'payment_status', order_record.payment_status,
+        'order_status', order_record.order_status
+    );
+end;
+$$;
+
+grant execute on function public.create_souvenir_order(jsonb) to anon, authenticated;
+
 create unique index if not exists profiles_email_unique_idx on public.profiles (lower(email)) where email is not null;
 create index if not exists profiles_email_lower_idx on public.profiles (lower(email));
 create index if not exists profiles_role_active_idx on public.profiles (role, is_active, account_expires_at);

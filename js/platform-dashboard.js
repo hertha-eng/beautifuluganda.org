@@ -343,6 +343,7 @@
                 isStaff() ? loadReviewPosts() : Promise.resolve(),
                 isStaff() ? loadProfiles() : Promise.resolve(),
                 isStaff() ? loadSouvenirs() : Promise.resolve(),
+                isStaff() ? loadOrders() : Promise.resolve(),
                 isStaff() ? loadAudit() : Promise.resolve()
             ]);
         } catch (error) {
@@ -571,6 +572,48 @@
                     <button type="button" class="small-button" data-edit-souvenir="${escapeHtml(item.id)}">Edit</button>
                     <button type="button" class="small-button" data-publish-souvenir="${escapeHtml(item.id)}">Publish</button>
                     <button type="button" class="small-button" data-delete-souvenir="${escapeHtml(item.id)}">Delete</button>
+                </div>
+            </article>
+        `;
+    }
+
+    async function loadOrders() {
+        const list = document.getElementById("orders-list");
+        const { data, error } = await supabase
+            .from("souvenir_order_accountability")
+            .select("*")
+            .order("created_at", { ascending: false })
+            .limit(100);
+
+        if (error) {
+            list.innerHTML = `<p>${escapeHtml(error.message)}</p>`;
+            return;
+        }
+
+        list.innerHTML = data.length ? data.map(renderOrder).join("") : "<p>No souvenir orders yet.</p>";
+    }
+
+    function renderOrder(order) {
+        return `
+            <article class="data-card">
+                <span class="status-pill">${escapeHtml(order.order_status)}</span>
+                <h4>${escapeHtml(order.order_number || order.id)}</h4>
+                <div class="meta-grid">
+                    <span>Customer: ${escapeHtml(order.customer_name)}</span>
+                    <span>Email: ${escapeHtml(order.customer_email)}</span>
+                    <span>Phone: ${escapeHtml(order.customer_phone)}</span>
+                    <span>Total: ${escapeHtml(order.currency)} ${Number(order.total || 0).toLocaleString()}</span>
+                    <span>Payment: ${escapeHtml(order.payment_status)}</span>
+                    <span>Created: ${escapeHtml(formatDate(order.created_at))}</span>
+                    <span>Updated by: ${escapeHtml(order.updated_by_name)}</span>
+                </div>
+                ${order.notes ? `<p class="audit-detail">${escapeHtml(order.notes)}</p>` : ""}
+                <div class="card-actions">
+                    <button type="button" class="small-button" data-order-status="processing" data-order-id="${escapeHtml(order.id)}">Processing</button>
+                    <button type="button" class="small-button" data-order-status="shipped" data-order-id="${escapeHtml(order.id)}">Shipped</button>
+                    <button type="button" class="small-button" data-order-status="completed" data-order-id="${escapeHtml(order.id)}">Completed</button>
+                    <button type="button" class="small-button" data-payment-status="successful" data-order-id="${escapeHtml(order.id)}">Paid</button>
+                    <button type="button" class="small-button" data-order-status="cancelled" data-order-id="${escapeHtml(order.id)}">Cancel</button>
                 </div>
             </article>
         `;
@@ -890,6 +933,30 @@
                 setStatus("Souvenir deleted.");
                 await Promise.all([loadSouvenirs(), loadAudit()]);
             }
+
+            if (target.dataset.orderStatus) {
+                const { error } = await supabase
+                    .from("souvenir_orders")
+                    .update({ order_status: target.dataset.orderStatus })
+                    .eq("id", target.dataset.orderId);
+                if (error) {
+                    throw error;
+                }
+                setStatus(`Order marked ${target.dataset.orderStatus}.`);
+                await Promise.all([loadOrders(), loadAudit()]);
+            }
+
+            if (target.dataset.paymentStatus) {
+                const { error } = await supabase
+                    .from("souvenir_orders")
+                    .update({ payment_status: target.dataset.paymentStatus })
+                    .eq("id", target.dataset.orderId);
+                if (error) {
+                    throw error;
+                }
+                setStatus(`Payment marked ${target.dataset.paymentStatus}.`);
+                await Promise.all([loadOrders(), loadAudit()]);
+            }
         } catch (error) {
             setStatus(error.message, true);
         }
@@ -899,6 +966,7 @@
     document.getElementById("refresh-review-posts").addEventListener("click", loadReviewPosts);
     document.getElementById("refresh-profiles").addEventListener("click", loadProfiles);
     document.getElementById("refresh-souvenirs").addEventListener("click", loadSouvenirs);
+    document.getElementById("refresh-orders").addEventListener("click", loadOrders);
     document.getElementById("refresh-audit").addEventListener("click", loadAudit);
 
     supabase.auth.onAuthStateChange(() => {
