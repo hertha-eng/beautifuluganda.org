@@ -96,7 +96,7 @@
                         <p class="panel-note">Save these once so your blog posts can use the same author details.</p>
                         <label>
                             Display Name
-                            <input type="text" name="display_name" placeholder="Your public name">
+                            <input type="text" name="display_name" placeholder="Your public name" readonly>
                         </label>
                         <label>
                             Country
@@ -109,6 +109,10 @@
                         <label>
                             Profile Image Path or URL
                             <input type="text" name="profile_image_path" placeholder="images/tourist.webp">
+                        </label>
+                        <label>
+                            Upload Profile Photo
+                            <input type="file" name="profile_image_file" accept="image/*">
                         </label>
                         <div class="two-column">
                             <label>
@@ -143,13 +147,20 @@
                             <input type="text" name="cover_image_path" placeholder="images/gorilla.webp">
                         </label>
                         <label>
+                            Upload Cover Image
+                            <input type="file" name="cover_image_file" accept="image/*">
+                        </label>
+                        <button type="button" class="small-button" id="upload-cover-image">Upload Cover Image</button>
+                        <label>
                             Article Content
                             <div class="editor-toolbar" aria-label="Article formatting tools">
                                 <button type="button" class="small-button" data-insert-block="h2">H2</button>
                                 <button type="button" class="small-button" data-insert-block="h3">H3</button>
                                 <button type="button" class="small-button" data-insert-block="paragraph">P</button>
                                 <button type="button" class="small-button" data-insert-block="image">Image</button>
+                                <button type="button" class="small-button" data-insert-block="upload-image">Upload Image</button>
                             </div>
+                            <input type="file" id="article-image-file" accept="image/*" hidden>
                             <textarea name="content" rows="12" required></textarea>
                         </label>
                         <div class="button-row">

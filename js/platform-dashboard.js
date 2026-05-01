@@ -17,6 +17,8 @@
     const submitBlogButton = document.getElementById("submit-blog-button");
     const profileForm = document.getElementById("profile-form");
     const souvenirForm = document.getElementById("souvenir-form");
+    const articleImageFile = document.getElementById("article-image-file");
+    const uploadCoverImageButton = document.getElementById("upload-cover-image");
 
     let currentUser = null;
     let currentProfile = null;
@@ -46,6 +48,37 @@
             .toLowerCase()
             .replace(/[^a-z0-9]+/g, "-")
             .replace(/^-+|-+$/g, "");
+    }
+
+    function cleanFileName(fileName) {
+        const extension = String(fileName || "").split(".").pop() || "jpg";
+        const baseName = String(fileName || "image")
+            .replace(/\.[^/.]+$/, "")
+            .toLowerCase()
+            .replace(/[^a-z0-9]+/g, "-")
+            .replace(/^-+|-+$/g, "")
+            .slice(0, 48) || "image";
+
+        return `${baseName}.${extension.toLowerCase()}`;
+    }
+
+    async function uploadPublicImage(bucket, file, folder) {
+        if (!file) {
+            return "";
+        }
+
+        const path = `${folder}/${Date.now()}-${cleanFileName(file.name)}`;
+        const { error } = await supabase.storage.from(bucket).upload(path, file, {
+            cacheControl: "3600",
+            upsert: false
+        });
+
+        if (error) {
+            throw error;
+        }
+
+        const { data } = supabase.storage.from(bucket).getPublicUrl(path);
+        return data.publicUrl;
     }
 
     function isStaff() {
@@ -171,7 +204,7 @@
         textarea.selectionEnd = start + value.length;
     }
 
-    function insertContentBlock(type) {
+    async function insertContentBlock(type) {
         const contentField = blogForm.elements.content;
         const selectedText = selectedTextOr(contentField, type === "paragraph" ? "Write this paragraph." : "Section heading");
         let snippet = "";
@@ -190,6 +223,13 @@
             const imageAlt = window.prompt("Image description", "Uganda travel photo") || "";
             const caption = window.prompt("Caption", "") || "";
             snippet = `\n<figure>\n<img src="${escapeHtml(imagePath)}" alt="${escapeHtml(imageAlt)}">\n${caption ? `<figcaption>${escapeHtml(caption)}</figcaption>\n` : ""}</figure>\n`;
+        } else if (type === "upload-image") {
+            if (!articleImageFile) {
+                return;
+            }
+
+            articleImageFile.click();
+            return;
         }
 
         insertAtCursor(contentField, snippet);
@@ -714,8 +754,55 @@
     });
 
     document.querySelectorAll("[data-insert-block]").forEach((button) => {
-        button.addEventListener("click", () => insertContentBlock(button.dataset.insertBlock));
+        button.addEventListener("click", async () => {
+            try {
+                await insertContentBlock(button.dataset.insertBlock);
+            } catch (error) {
+                setStatus(error.message, true);
+            }
+        });
     });
+
+    if (articleImageFile) {
+        articleImageFile.addEventListener("change", async () => {
+            const file = articleImageFile.files && articleImageFile.files[0];
+            if (!file) {
+                return;
+            }
+
+            try {
+                setStatus("Uploading article image...");
+                const url = await uploadPublicImage("blog-images", file, `articles/${currentUser.id}`);
+                const imageAlt = window.prompt("Image description", file.name.replace(/\.[^/.]+$/, "")) || "";
+                const caption = window.prompt("Caption", "") || "";
+                const snippet = `\n<figure>\n<img src="${escapeHtml(url)}" alt="${escapeHtml(imageAlt)}">\n${caption ? `<figcaption>${escapeHtml(caption)}</figcaption>\n` : ""}</figure>\n`;
+                insertAtCursor(blogForm.elements.content, snippet);
+                articleImageFile.value = "";
+                setStatus("Article image uploaded.");
+            } catch (error) {
+                setStatus(error.message, true);
+            }
+        });
+    }
+
+    if (uploadCoverImageButton) {
+        uploadCoverImageButton.addEventListener("click", async () => {
+            const file = blogForm.elements.cover_image_file.files && blogForm.elements.cover_image_file.files[0];
+            if (!file) {
+                setStatus("Choose a cover image file first.", true);
+                return;
+            }
+
+            try {
+                setStatus("Uploading cover image...");
+                blogForm.elements.cover_image_path.value = await uploadPublicImage("blog-images", file, `covers/${currentUser.id}`);
+                blogForm.elements.cover_image_file.value = "";
+                setStatus("Cover image uploaded.");
+            } catch (error) {
+                setStatus(error.message, true);
+            }
+        });
+    }
 
     document.getElementById("clear-blog-form").addEventListener("click", resetBlogForm);
 
@@ -728,12 +815,27 @@
         }
 
         const formData = new FormData(touristDetailsForm);
+        const profileImageFile = touristDetailsForm.elements.profile_image_file.files && touristDetailsForm.elements.profile_image_file.files[0];
+        let profileImagePath = formData.get("profile_image_path").trim();
+
+        try {
+            if (profileImageFile) {
+                setStatus("Uploading profile photo...");
+                profileImagePath = await uploadPublicImage("profile-images", profileImageFile, `tourists/${currentUser.id}`);
+                touristDetailsForm.elements.profile_image_path.value = profileImagePath;
+                touristDetailsForm.elements.profile_image_file.value = "";
+            }
+        } catch (error) {
+            setStatus(error.message, true);
+            return;
+        }
+
         const payload = {
             profile_id: currentUser.id,
-            display_name: formData.get("display_name").trim(),
+            display_name: currentProfile && currentProfile.full_name || currentUser.email,
             country: formData.get("country").trim(),
             short_bio: formData.get("short_bio").trim(),
-            profile_image_path: formData.get("profile_image_path").trim(),
+            profile_image_path: profileImagePath,
             instagram_url: formData.get("instagram_url").trim(),
             website_url: formData.get("website_url").trim()
         };

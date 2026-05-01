@@ -79,14 +79,14 @@ Deno.serve(async (request) => {
     }
 
     if (action === "update" && account.id) {
-      const target = await getProfile(userClient, account.id);
+      const target = await getProfile(adminClient, account.id);
       if (["admin", "staff"].includes(target.role) && !isMajorAdmin) {
         throw new Error(`Only ${MAJOR_ADMIN_EMAIL} can manage admin/staff accounts.`);
       }
     }
 
     if (["enable", "disable", "delete"].includes(action)) {
-      const target = await getProfile(userClient, account.id);
+      const target = await getProfile(adminClient, account.id);
       if (["admin", "staff"].includes(target.role) && !isMajorAdmin) {
         throw new Error(`Only ${MAJOR_ADMIN_EMAIL} can manage admin/staff accounts.`);
       }
@@ -109,7 +109,7 @@ Deno.serve(async (request) => {
       }
 
       try {
-        await upsertProfile(userClient, {
+        await upsertProfile(adminClient, {
           ...account,
           id: created.user.id,
           role: account.role || "tourist",
@@ -141,7 +141,7 @@ Deno.serve(async (request) => {
         }
       }
 
-      await upsertProfile(userClient, {
+      await upsertProfile(adminClient, {
         ...account,
         password: undefined,
       });
@@ -149,7 +149,7 @@ Deno.serve(async (request) => {
     }
 
     if (action === "enable" || action === "disable") {
-      const { error } = await userClient
+      const { error } = await adminClient
         .from("profiles")
         .update({ is_active: action === "enable" })
         .eq("id", account.id);
@@ -166,7 +166,7 @@ Deno.serve(async (request) => {
         throw new Error("Account ID is required.");
       }
 
-      const { error: deleteProfileError } = await userClient.from("profiles").delete().eq("id", account.id);
+      const { error: deleteProfileError } = await adminClient.from("profiles").delete().eq("id", account.id);
       if (deleteProfileError) {
         throw deleteProfileError;
       }
